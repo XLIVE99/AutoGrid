@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://addons/AutoGrid/edit_button.gd" type="Script" id=2]
+
+[node name="Edit_Mode" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuButton" type="MenuButton" parent="."]
+margin_right = 85.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 85, 20 )
+text = "AutoGrid"
+icon = ExtResource( 1 )
+expand_icon = true
+items = [ "Create Bitmask", null, 0, false, false, 0, 33554516, null, "", false, "Remove Bitmask", null, 0, false, false, 1, 33554513, null, "", false, "Increase Bitmask", null, 0, false, false, 2, 33554481, null, "", false, "Decrease Bitmask", null, 0, false, false, 3, 33554482, null, "", false, "", null, 0, false, false, 4, 0, null, "", true, "3D", null, 0, false, false, 5, 0, null, "", false, "Only X", null, 0, false, false, 6, 0, null, "", false, "Only Y", null, 0, false, false, 7, 0, null, "", false, "Only Z", null, 0, false, false, 8, 0, null, "", false, "", null, 0, false, false, 9, 0, null, "", true, "Set Icon", null, 0, false, false, 10, 0, null, "", false ]
+switch_on_hover = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
