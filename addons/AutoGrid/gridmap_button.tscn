@@ -1,0 +1,128 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/AutoGrid/gridmap_button.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[node name="Gridmap_Dock" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 31.0
+size_flags_horizontal = 5
+size_flags_vertical = 1
+text = "AutoGrid
+By XLIVE99"
+align = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+margin_top = 35.0
+margin_right = 1024.0
+margin_bottom = 83.0
+size_flags_vertical = 1
+text = "--------------
+Please read HELP.pdf for usage
+Thank you for downloading"
+align = 1
+
+[node name="Control" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 87.0
+margin_right = 1024.0
+margin_bottom = 544.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Left" type="VBoxContainer" parent="VBoxContainer/Control"]
+margin_right = 510.0
+margin_bottom = 457.0
+size_flags_horizontal = 3
+
+[node name="Empty" type="Control" parent="VBoxContainer/Control/Left"]
+margin_right = 510.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 0, 15 )
+
+[node name="Label" type="Label" parent="VBoxContainer/Control/Left"]
+margin_top = 19.0
+margin_right = 510.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 0, 20 )
+text = "Autotile Mode"
+valign = 1
+
+[node name="Right" type="VBoxContainer" parent="VBoxContainer/Control"]
+margin_left = 514.0
+margin_right = 1024.0
+margin_bottom = 457.0
+size_flags_horizontal = 3
+
+[node name="Empty" type="Control" parent="VBoxContainer/Control/Right"]
+margin_right = 510.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 0, 15 )
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/Control/Right"]
+margin_top = 19.0
+margin_right = 510.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 0, 20 )
+text = "Full 3x3"
+items = [ "Full 3x3", null, false, 0, null, "Minimal 3x3", null, false, 1, null ]
+selected = 0
+
+[node name="Bug_Report" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 548.0
+margin_right = 1024.0
+margin_bottom = 582.0
+rect_min_size = Vector2( 0, 28 )
+size_flags_horizontal = 3
+
+[node name="Github_Rich" type="RichTextLabel" parent="VBoxContainer/Bug_Report"]
+margin_right = 1024.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 0, 15 )
+custom_styles/normal = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "For feature request or bug report, you can open issue from [url=https://github.com/XLIVE99/Gridmap_Autotile/issues]github repo[/url]"
+text = "For feature request or bug report, you can open issue from github repo"
+fit_content_height = true
+scroll_active = false
+
+[node name="Github_Rich2" type="RichTextLabel" parent="VBoxContainer/Bug_Report"]
+margin_top = 19.0
+margin_right = 1024.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 0, 15 )
+custom_styles/normal = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "Also you can see my other works from my [url=https://www.linkedin.com/in/burak-idilmek-856669175/]LinkedIn[/url] (Feel free to message me)"
+text = "Also you can see my other works from my LinkedIn (Feel free to message me)"
+fit_content_height = true
+scroll_active = false
+
+[node name="Label4" type="Label" parent="VBoxContainer"]
+margin_top = 586.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_vertical = 1
+custom_colors/font_color = Color( 0.568627, 0.568627, 0.568627, 1 )
+text = "Version 1.0"
+align = 2
+[connection signal="item_selected" from="VBoxContainer/Control/Right/OptionButton" to="." method="_on_OptionButton_item_selected"]
+[connection signal="meta_clicked" from="VBoxContainer/Bug_Report/Github_Rich" to="." method="_on_Github_Rich_meta_clicked"]
+[connection signal="meta_clicked" from="VBoxContainer/Bug_Report/Github_Rich2" to="." method="_on_Github_Rich_meta_clicked"]

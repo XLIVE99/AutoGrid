@@ -6,11 +6,9 @@ var core
 
 var auto_bitmask : PackedScene
 
-var bitmask_size : float
-
 func _enter_tree():
 	#Assign controls
-	popup = $MenuButton.get_popup()
+	popup = get_node("MenuButton").get_popup()
 	
 	#Set popup
 	popup.set_item_accelerator(0, KEY_T | KEY_MASK_SHIFT)
