@@ -24,7 +24,7 @@ All AutoGrid settings are in the AutoGrid dock panel which is in same tab as the
    - Only Y: Shows the only y axis of the bitmask (Global Y).
    - Only Z: Shows the only z axis of the bitmask (Global Z).
    - Set Icon: Sets the icon for the AutoGrid tile to be created (Default is the first child of the scene, selected icon will be shown as blue transparent sphere).
-4. After creating the bitmask you can simply paint it by clicking on white cubes, painted cubes will become red. Click on the cube again for disabling it.
+4. After creating the bitmask you can simply paint it by clicking on white cubes, painted cubes will become red. Click on the cube again for disabling it.<br>
 ![](images/Bitmask.png)
 ### **Creating autotile info**
 After setting all the bitmasks. Click to "Create Autotile Info" button located in the AutoGrid panel. Then create MeshLibrary again and you are ready to go! The autotile system will work now.<br>
