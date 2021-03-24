@@ -4,6 +4,8 @@ extends MeshInstance
 var bit_value : int = 0
 var is_icon : bool = false
 
+var is_active : bool = false
+
 enum { All, AxisX, AxisY, AxisZ}
 var currentAxis = All
 
@@ -47,6 +49,15 @@ func set_child_from_bit(mask : int, forceActive : bool = false):
 			child.visible = false
 		mask = mask >> 1
 
+func enable_from_bit(mask : int):
+	for child in get_children():
+		child.enabled = mask & 1 == 1
+		mask = mask >> 1
+	if !is_active:
+		deactivate()
+	
+	is_icon = get_surface_material(0).albedo_color.a > 0.3
+
 func set_for_icon():
 	is_icon = true
 	get_surface_material(0).albedo_color.a = 0.7
@@ -56,11 +67,13 @@ func disable_icon():
 	get_surface_material(0).albedo_color.a = 0.0
 
 func activate():
+	is_active = true
 	for child in get_children():
 		if child.visible:
 			child.activate()
 
 func deactivate():
+	is_active = false
 	for child in get_children():
 		if child.visible:
 			child.deactivate()

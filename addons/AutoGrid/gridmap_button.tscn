@@ -1,12 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
+[ext_resource path="res://addons/AutoGrid/res/ErrorSign.svg" type="Texture" id=1]
 [ext_resource path="res://addons/AutoGrid/gridmap_button.gd" type="Script" id=2]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
-[node name="Gridmap_Dock" type="Control"]
+[node name="AutoGrid" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
@@ -30,60 +31,179 @@ text = "AutoGrid
 By XLIVE99"
 align = 1
 
-[node name="Label2" type="Label" parent="VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
 margin_top = 35.0
 margin_right = 1024.0
-margin_bottom = 83.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 15 )
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+margin_top = 54.0
+margin_right = 1024.0
+margin_bottom = 85.0
 size_flags_vertical = 1
-text = "--------------
-Please read HELP.pdf for usage
+text = "Please read HELP.pdf for usage
 Thank you for downloading"
 align = 1
 
-[node name="Control" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 87.0
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+margin_top = 89.0
 margin_right = 1024.0
-margin_bottom = 544.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 0, 15 )
+
+[node name="VBox" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 108.0
+margin_right = 1024.0
+margin_bottom = 414.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Left" type="VBoxContainer" parent="VBoxContainer/Control"]
-margin_right = 510.0
-margin_bottom = 457.0
-size_flags_horizontal = 3
+[node name="Autotile" type="HBoxContainer" parent="VBoxContainer/VBox"]
+margin_right = 1024.0
+margin_bottom = 24.0
 
-[node name="Empty" type="Control" parent="VBoxContainer/Control/Left"]
+[node name="Autotile" type="Label" parent="VBoxContainer/VBox/Autotile"]
+margin_top = 2.0
 margin_right = 510.0
-margin_bottom = 15.0
-rect_min_size = Vector2( 0, 15 )
-
-[node name="Label" type="Label" parent="VBoxContainer/Control/Left"]
-margin_top = 19.0
-margin_right = 510.0
-margin_bottom = 39.0
+margin_bottom = 22.0
 rect_min_size = Vector2( 0, 20 )
+size_flags_horizontal = 3
+text = "Autotile"
+valign = 1
+
+[node name="Autotile_Check" type="CheckBox" parent="VBoxContainer/VBox/Autotile"]
+margin_left = 514.0
+margin_right = 1024.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+shortcut_in_tooltip = false
+pressed = true
+text = "On"
+
+[node name="Auto_Mode" type="HBoxContainer" parent="VBoxContainer/VBox"]
+margin_top = 28.0
+margin_right = 1024.0
+margin_bottom = 48.0
+
+[node name="Auto_Mode" type="Label" parent="VBoxContainer/VBox/Auto_Mode"]
+margin_right = 510.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 20 )
+size_flags_horizontal = 3
 text = "Autotile Mode"
 valign = 1
 
-[node name="Right" type="VBoxContainer" parent="VBoxContainer/Control"]
+[node name="Auto_Mode_Opt" type="OptionButton" parent="VBoxContainer/VBox/Auto_Mode"]
 margin_left = 514.0
 margin_right = 1024.0
-margin_bottom = 457.0
-size_flags_horizontal = 3
-
-[node name="Empty" type="Control" parent="VBoxContainer/Control/Right"]
-margin_right = 510.0
-margin_bottom = 15.0
-rect_min_size = Vector2( 0, 15 )
-
-[node name="OptionButton" type="OptionButton" parent="VBoxContainer/Control/Right"]
-margin_top = 19.0
-margin_right = 510.0
-margin_bottom = 39.0
+margin_bottom = 20.0
 rect_min_size = Vector2( 0, 20 )
+size_flags_horizontal = 3
+shortcut_in_tooltip = false
 text = "Full 3x3"
 items = [ "Full 3x3", null, false, 0, null, "Minimal 3x3", null, false, 1, null ]
 selected = 0
+
+[node name="Control" type="Control" parent="VBoxContainer/VBox"]
+margin_top = 52.0
+margin_right = 1024.0
+margin_bottom = 67.0
+rect_min_size = Vector2( 0, 15 )
+
+[node name="Edit_Mode" type="HBoxContainer" parent="VBoxContainer/VBox"]
+margin_top = 71.0
+margin_right = 1024.0
+margin_bottom = 95.0
+
+[node name="Edit_Mode" type="Label" parent="VBoxContainer/VBox/Edit_Mode"]
+margin_top = 2.0
+margin_right = 510.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 0, 20 )
+size_flags_horizontal = 3
+text = "Edit Mode"
+valign = 1
+
+[node name="Edit_Mode_Checked" type="CheckBox" parent="VBoxContainer/VBox/Edit_Mode"]
+margin_left = 514.0
+margin_right = 1024.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+shortcut_in_tooltip = false
+text = "On"
+
+[node name="Buttons" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 418.0
+margin_right = 1024.0
+margin_bottom = 438.0
+alignment = 1
+
+[node name="Control" type="CenterContainer" parent="VBoxContainer/Buttons"]
+margin_right = 510.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 20 )
+size_flags_horizontal = 3
+
+[node name="Reload_Autotile" type="Button" parent="VBoxContainer/Buttons/Control"]
+margin_left = 185.0
+margin_right = 324.0
+margin_bottom = 20.0
+text = "Reload Autotile Info"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control2" type="CenterContainer" parent="VBoxContainer/Buttons"]
+margin_left = 514.0
+margin_right = 1024.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 20 )
+size_flags_horizontal = 3
+
+[node name="Create_Autotile" type="Button" parent="VBoxContainer/Buttons/Control2"]
+margin_left = 186.0
+margin_right = 323.0
+margin_bottom = 20.0
+shortcut_in_tooltip = false
+text = "Create Autotile Info"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer"]
+margin_top = 442.0
+margin_right = 1024.0
+margin_bottom = 457.0
+rect_min_size = Vector2( 0, 15 )
+
+[node name="Warning" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 461.0
+margin_right = 1024.0
+margin_bottom = 525.0
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Warning"]
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+texture = ExtResource( 1 )
+expand = true
+
+[node name="Label" type="Label" parent="VBoxContainer/Warning"]
+margin_left = 68.0
+margin_top = 25.0
+margin_right = 1024.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 3
+text = "Please do not change automatically created node names! AutoGrid recognize its nodes from the node names!"
+autowrap = true
+
+[node name="HSeparator4" type="HSeparator" parent="VBoxContainer"]
+margin_top = 529.0
+margin_right = 1024.0
+margin_bottom = 544.0
+rect_min_size = Vector2( 0, 15 )
 
 [node name="Bug_Report" type="VBoxContainer" parent="VBoxContainer"]
 margin_top = 548.0
@@ -123,6 +243,10 @@ size_flags_vertical = 1
 custom_colors/font_color = Color( 0.568627, 0.568627, 0.568627, 1 )
 text = "Version 1.0"
 align = 2
-[connection signal="item_selected" from="VBoxContainer/Control/Right/OptionButton" to="." method="_on_OptionButton_item_selected"]
+[connection signal="toggled" from="VBoxContainer/VBox/Autotile/Autotile_Check" to="." method="_on_Autotile_Check_toggled"]
+[connection signal="item_selected" from="VBoxContainer/VBox/Auto_Mode/Auto_Mode_Opt" to="." method="_on_OptionButton_item_selected"]
+[connection signal="toggled" from="VBoxContainer/VBox/Edit_Mode/Edit_Mode_Checked" to="." method="_on_Edit_Mode_Checked_toggled"]
+[connection signal="pressed" from="VBoxContainer/Buttons/Control/Reload_Autotile" to="." method="_on_Reload_Autotile_pressed"]
+[connection signal="pressed" from="VBoxContainer/Buttons/Control2/Create_Autotile" to="." method="_on_Create_Autotile_pressed"]
 [connection signal="meta_clicked" from="VBoxContainer/Bug_Report/Github_Rich" to="." method="_on_Github_Rich_meta_clicked"]
 [connection signal="meta_clicked" from="VBoxContainer/Bug_Report/Github_Rich2" to="." method="_on_Github_Rich_meta_clicked"]
