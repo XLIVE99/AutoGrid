@@ -8,11 +8,11 @@ AutoGrid is an autotile system for the GridMap node in the Godot Engine. AutoGri
 
 ## **Usage**
 All AutoGrid settings are in the AutoGrid dock panel which is in same tab as the inspector panel.<br>
-[](images/dock_panel.png)
+![](images/dock_panel.png)
 ### **Setting the bitmasks**
 1. Set the scene as shown in [Creating a MeshLibrary](https://docs.godotengine.org/en/stable/tutorials/3d/using_gridmaps.html).<br>
 2. Enable the "Edit Mode" from the AutoGrid panel then select a MeshInstance you want to create the bitmask of it.<br>
-[](images/Edit_Button_Options.png)
+![](images/Edit_Button_Options.png)
 3. You will see a button named "AutoGrid" on top of the scene panel.
    - Create Bitmask: Creates a bitmask for the selected MeshInstance.
    - Remove Bitmask: Deletes the bitmask of the selected MeshInstance.
@@ -30,7 +30,7 @@ After setting all the bitmasks. Click to "Create Autotile Info" button located i
 ***Read "addons>AutoGrid>HELP.pdf" for more information***
 
 ### **Settings**
-[](images/panel_inside.png)
+![](images/panel_inside.png)
 - Autotile: Enables autotile system.
 - Autotile Mode:
   - Full 3x3: Checks every corner for fit the perfect tile for that place (Same as tilemap).
@@ -40,7 +40,7 @@ After setting all the bitmasks. Click to "Create Autotile Info" button located i
 - Performance Mode: If enabled only checks for new tiles, do not check for repainted tiles (If map is too big, enabling this might increase the performance).
 - Reload Autotile Info: Reloads the bitmasks value.
 - Create Autotile Info: Creates the autotile file.
-[](images/Performance_Mode.png)
+![](images/Performance_Mode.png)
 
 ## **Limitations**
 - AutoGrid doesn't provide extended MeshLibrary, therefore all limitations on the MeshLibrary will remain.
