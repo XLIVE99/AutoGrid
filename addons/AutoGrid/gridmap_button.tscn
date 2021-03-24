@@ -133,6 +133,28 @@ size_flags_horizontal = 3
 shortcut_in_tooltip = false
 text = "On"
 
+[node name="Performance_Mode" type="HBoxContainer" parent="VBoxContainer/VBox"]
+margin_top = 99.0
+margin_right = 1024.0
+margin_bottom = 123.0
+rect_min_size = Vector2( 0, 24 )
+
+[node name="Performance_Mode" type="Label" parent="VBoxContainer/VBox/Performance_Mode"]
+margin_top = 5.0
+margin_right = 510.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "Performance Mode"
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer/VBox/Performance_Mode"]
+margin_left = 514.0
+margin_right = 1024.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+shortcut_in_tooltip = false
+pressed = true
+text = "On"
+
 [node name="Buttons" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 418.0
 margin_right = 1024.0
@@ -246,6 +268,7 @@ align = 2
 [connection signal="toggled" from="VBoxContainer/VBox/Autotile/Autotile_Check" to="." method="_on_Autotile_Check_toggled"]
 [connection signal="item_selected" from="VBoxContainer/VBox/Auto_Mode/Auto_Mode_Opt" to="." method="_on_OptionButton_item_selected"]
 [connection signal="toggled" from="VBoxContainer/VBox/Edit_Mode/Edit_Mode_Checked" to="." method="_on_Edit_Mode_Checked_toggled"]
+[connection signal="toggled" from="VBoxContainer/VBox/Performance_Mode/CheckBox" to="." method="_on_CheckBox_toggled"]
 [connection signal="pressed" from="VBoxContainer/Buttons/Control/Reload_Autotile" to="." method="_on_Reload_Autotile_pressed"]
 [connection signal="pressed" from="VBoxContainer/Buttons/Control2/Create_Autotile" to="." method="_on_Create_Autotile_pressed"]
 [connection signal="meta_clicked" from="VBoxContainer/Bug_Report/Github_Rich" to="." method="_on_Github_Rich_meta_clicked"]

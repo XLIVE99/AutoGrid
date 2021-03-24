@@ -8,6 +8,7 @@ var fileDialog : FileDialog
 
 var autotileEnabled := true
 var editMode := false setget editmode_changed
+var performanceMode := true
 var currentGridmap : GridMap
 var currentMeshInstance : MeshInstance
 
@@ -22,6 +23,7 @@ var editAxis = 0 setget axis_changed#0=All, 1=AxisX, 2=AxisY, 3=AxisZ
 var autotileDictionary : Dictionary
 var autogridId : int
 var bitmaskMode : int = 0 #0=full 3x3, minimal 3x3
+var emptyTileId : int
 
 var editedCells : PoolVector3Array
 
@@ -113,6 +115,10 @@ func load_autotile_info_from(fileDir : String, changeNameToId : bool = true):
 			for j in values.size():
 				if itemName == values[j]:
 					autotileDictionary[keys[j]] = i
+		if autotileDictionary[keys[0]] != autogridId:
+			emptyTileId = autotileDictionary[keys[0]]
+		else:
+			emptyTileId = autotileDictionary[keys[1]]
 
 func editmode_changed(val):
 	editMode = val
@@ -141,7 +147,7 @@ func gridmap_inputs(event):
 			if event.is_pressed():
 				getDraw = true
 				erasing = false
-				lastSize = 0
+				lastSize = max(lastSize - 1, 0)
 				add_to_edited_cells()
 			else:
 				getDraw = false
@@ -152,7 +158,7 @@ func gridmap_inputs(event):
 			if event.is_pressed():
 				getDraw = true
 				erasing = true
-				lastSize = 0
+				lastSize = lastSize + 1
 				add_to_edited_cells()
 			else:
 				getDraw = false
@@ -191,12 +197,29 @@ func add_to_edited_cells():
 		var lastEditedV = get_last_edited_tile_fast(totalV)
 		editedCells.append(lastEditedV)
 		lastSize = currentSize
+	elif !performanceMode:
+		for cell in cells:
+			var appendCell := true
+			var cellID = currentGridmap.get_cell_item(cell.x, cell.y, cell.z)
+			if cellID == autogridId:
+				for editedCell in editedCells:
+					if editedCell == cell:
+						appendCell = false
+						break
+				if appendCell:
+					editedCells.append(cell)
 
 func check_autotile():
 	for editedCell in editedCells:
 		var lastEditedV = editedCell
 		var lastEditedCell = currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y, lastEditedV.z)
 		var bitVal = 0
+		
+		var values = autotileDictionary.values()
+		
+		if lastEditedCell != -1 && lastEditedCell != autogridId && !values.has(lastEditedCell):
+			#print("Its not autotile: ", currentGridmap.mesh_library.get_item_name(lastEditedCell))
+			continue
 		
 		if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z + 1) != -1:
 			bitVal |= 1 #2^0
@@ -400,16 +423,15 @@ func check_autotile():
 				update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z + 1))
 				update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z + 1))
 		
-		if lastEditedCell != -1:
+		if lastEditedCell == autogridId:
 			var orientation = currentGridmap.get_cell_item_orientation(lastEditedV.x, lastEditedV.y, lastEditedV.z)
-			if currentGridmap.mesh_library.get_item_name(lastEditedCell).ends_with("_agrid"):
-				if !autotileDictionary.has(str(bitVal)):
-					pass
-					#print("Corresponding tile not found: ", bitVal)
-				else:
-					currentGridmap.set_cell_item(lastEditedV.x, lastEditedV.y, lastEditedV.z, autotileDictionary.get(str(bitVal)), orientation)
-					print("setted: ", lastEditedV, " id: ", autotileDictionary.get(str(bitVal)))
-	editedCells.empty()
+			if !autotileDictionary.has(str(bitVal)):
+				pass
+				#print("Corresponding tile not found: ", bitVal)
+			else:
+				currentGridmap.set_cell_item(lastEditedV.x, lastEditedV.y, lastEditedV.z, autotileDictionary.get(str(bitVal)), orientation)
+				#print("setted: ", lastEditedV, " id: ", autotileDictionary.get(str(bitVal)))
+	editedCells.resize(0)
 
 func update_autotile_from_corner(cell : Vector3):
 	var cellId = currentGridmap.get_cell_item(cell.x, cell.y, cell.z)
@@ -417,7 +439,7 @@ func update_autotile_from_corner(cell : Vector3):
 		return
 	var values = autotileDictionary.values()
 	if cellId != autogridId && !values.has(cellId):
-		print("cell: ", cellId)
+		#print("cell: ", cellId)
 		return
 	var result = cell
 	var bitVal : int
