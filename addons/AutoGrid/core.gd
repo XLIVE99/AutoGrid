@@ -73,13 +73,13 @@ func load_autotile_info():
 			fileDir = currentGridmap.mesh_library.get_item_mesh(i).resource_name
 			autogridId = i
 	
-	load_autotile_info_from(fileDir)
-
-func load_autotile_info_from(fileDir : String, changeNameToId : bool = true):
 	if fileDir.empty():
 		print("Autotile is not available for this gridmap. Please create autotile or disable autotile from AutoGrid window on the right")
 		return
 	
+	load_autotile_info_from(fileDir)
+
+func load_autotile_info_from(fileDir : String, changeNameToId : bool = true):
 	var loadFile = File.new()
 	if loadFile.open(fileDir, File.READ) != OK:
 		print("File couldn't find at ", fileDir)
@@ -694,6 +694,10 @@ func reload_autotile_info():
 			fileDir = child.mesh.resource_name
 			break
 	
+	if fileDir.empty():
+		print("autotile info couldn't find.")
+		return
+	
 	load_autotile_info_from(fileDir, false)
 	
 	var keys = autotileDictionary.keys()
@@ -724,7 +728,7 @@ func create_autotile_info(dir : String):
 			var bitmask = child.get_node("AutoGrid_Bitmask")
 			var bitValue = bitmask.calculate_bit_value()
 			storeDict[bitValue] = child.name
-			print("name: ", child.name, " bit: ", bitValue)
+			#print("name: ", child.name, " bit: ", bitValue)
 			if bitmask.is_icon:
 				iconHolder = child
 	

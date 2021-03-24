@@ -261,7 +261,7 @@ margin_bottom = 15.0
 rect_min_size = Vector2( 0, 15 )
 custom_styles/normal = SubResource( 1 )
 bbcode_enabled = true
-bbcode_text = "For feature request or bug report, you can open issue from [url=https://github.com/XLIVE99/Gridmap_Autotile/issues]github repo[/url]"
+bbcode_text = "For feature request or bug report, you can open issue from [url=https://github.com/XLIVE99/AutoGrid]github repo[/url]"
 text = "For feature request or bug report, you can open issue from github repo"
 fit_content_height = true
 scroll_active = false
