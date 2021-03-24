@@ -105,16 +105,37 @@ text = "Full 3x3"
 items = [ "Full 3x3", null, false, 0, null, "Minimal 3x3", null, false, 1, null ]
 selected = 0
 
-[node name="Control" type="Control" parent="VBoxContainer/VBox"]
+[node name="Auto_Axis" type="HBoxContainer" parent="VBoxContainer/VBox"]
 margin_top = 52.0
 margin_right = 1024.0
-margin_bottom = 67.0
+margin_bottom = 72.0
+
+[node name="Label" type="Label" parent="VBoxContainer/VBox/Auto_Axis"]
+margin_top = 3.0
+margin_right = 510.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+text = "Autotile Axis"
+
+[node name="Auto_Axis_Opt" type="OptionButton" parent="VBoxContainer/VBox/Auto_Axis"]
+margin_left = 514.0
+margin_right = 1024.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "All"
+items = [ "All", null, false, 0, null, "Only X", null, false, 1, null, "Only Y", null, false, 2, null, "Only Z", null, false, 3, null ]
+selected = 0
+
+[node name="Control" type="Control" parent="VBoxContainer/VBox"]
+margin_top = 76.0
+margin_right = 1024.0
+margin_bottom = 91.0
 rect_min_size = Vector2( 0, 15 )
 
 [node name="Edit_Mode" type="HBoxContainer" parent="VBoxContainer/VBox"]
-margin_top = 71.0
+margin_top = 95.0
 margin_right = 1024.0
-margin_bottom = 95.0
+margin_bottom = 119.0
 
 [node name="Edit_Mode" type="Label" parent="VBoxContainer/VBox/Edit_Mode"]
 margin_top = 2.0
@@ -134,9 +155,9 @@ shortcut_in_tooltip = false
 text = "On"
 
 [node name="Performance_Mode" type="HBoxContainer" parent="VBoxContainer/VBox"]
-margin_top = 99.0
+margin_top = 123.0
 margin_right = 1024.0
-margin_bottom = 123.0
+margin_bottom = 147.0
 rect_min_size = Vector2( 0, 24 )
 
 [node name="Performance_Mode" type="Label" parent="VBoxContainer/VBox/Performance_Mode"]
@@ -267,6 +288,7 @@ text = "Version 1.0"
 align = 2
 [connection signal="toggled" from="VBoxContainer/VBox/Autotile/Autotile_Check" to="." method="_on_Autotile_Check_toggled"]
 [connection signal="item_selected" from="VBoxContainer/VBox/Auto_Mode/Auto_Mode_Opt" to="." method="_on_OptionButton_item_selected"]
+[connection signal="item_selected" from="VBoxContainer/VBox/Auto_Axis/Auto_Axis_Opt" to="." method="_on_Auto_Axis_Opt_item_selected"]
 [connection signal="toggled" from="VBoxContainer/VBox/Edit_Mode/Edit_Mode_Checked" to="." method="_on_Edit_Mode_Checked_toggled"]
 [connection signal="toggled" from="VBoxContainer/VBox/Performance_Mode/CheckBox" to="." method="_on_CheckBox_toggled"]
 [connection signal="pressed" from="VBoxContainer/Buttons/Control/Reload_Autotile" to="." method="_on_Reload_Autotile_pressed"]

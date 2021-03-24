@@ -19,6 +19,7 @@ var lastVec := Vector3.ZERO
 
 var bitmaskSize : float = 1.0
 var editAxis = 0 setget axis_changed#0=All, 1=AxisX, 2=AxisY, 3=AxisZ
+var autoAxis = 0 #Check the AUTO_AXIS
 
 var autotileDictionary : Dictionary
 var autogridId : int
@@ -28,31 +29,12 @@ var emptyTileId : int
 var editedCells : PoolVector3Array
 
 const BITMASK_BOX = preload("res://addons/AutoGrid/bitmask_box.gd")
-const orthogonal_angles = [
-	Vector3(0, 0, 0),
-	Vector3(0, 0, PI/2),
-	Vector3(0, 0, PI),
-	Vector3(0, 0, -PI/2),
-	Vector3(PI/2, 0, 0),
-	Vector3(PI, -PI/2, -PI/2),
-	Vector3(-PI/2, PI, 0),
-	Vector3(0, -PI/2, -PI/2),
-	Vector3(-PI, 0, 0),
-	Vector3(PI, 0, -PI/2),
-	Vector3(0, PI, 0),
-	Vector3(0, PI, -PI/2),
-	Vector3(-PI/2, 0, 0),
-	Vector3(0, -PI/2, PI/2),
-	Vector3(PI/2, 0, PI),
-	Vector3(0, PI/2, -PI/2),
-	Vector3(0, PI/2, 0),
-	Vector3(-PI/2, PI/2, 0),
-	Vector3(PI, PI/2, 0),
-	Vector3(PI/2, PI/2, 0),
-	Vector3(PI, -PI/2, 0),
-	Vector3(-PI/2, -PI/2, 0),
-	Vector3(0, -PI/2, 0),
-	Vector3(PI/2, -PI/2, 0)
+
+const AUTO_AXIS = [
+	67108863, #All
+	35791633, #Only X
+	130560, #Only Y
+	42502468 #Only Z
 ]
 
 func handles(object) -> bool:
@@ -423,6 +405,8 @@ func check_autotile():
 				update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z + 1))
 				update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z + 1))
 		
+		bitVal &= AUTO_AXIS[autoAxis]
+		
 		if lastEditedCell == autogridId:
 			var orientation = currentGridmap.get_cell_item_orientation(lastEditedV.x, lastEditedV.y, lastEditedV.z)
 			if !autotileDictionary.has(str(bitVal)):
@@ -583,6 +567,8 @@ func update_autotile_from_corner(cell : Vector3):
 		&& currentGridmap.get_cell_item(result.x - 1, result.y + 1, result.z + 1) != -1\
 		&& currentGridmap.get_cell_item(result.x, result.y + 1, result.z + 1) != -1:
 			bitVal |= 25296896 #2^23 + 2^24 + 2^17
+	
+	bitVal &= AUTO_AXIS[autoAxis]
 	
 	if autotileDictionary.has(str(bitVal)):
 		var orientation = currentGridmap.get_cell_item_orientation(cell.x, cell.y, cell.z)

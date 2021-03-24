@@ -25,3 +25,6 @@ func _on_Reload_Autotile_pressed():
 
 func _on_CheckBox_toggled(button_pressed):
 	core.performanceMode = button_pressed
+
+func _on_Auto_Axis_Opt_item_selected(index):
+	core.autoAxis = index
