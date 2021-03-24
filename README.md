@@ -1,4 +1,5 @@
 # AutoGrid
+###### Version 1.0
 AutoGrid is an autotile system for the GridMap node in the Godot Engine. AutoGrid works similar to the TileMap node.
 
 ## **Installation**
