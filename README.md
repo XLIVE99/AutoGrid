@@ -5,7 +5,6 @@ AutoGrid is an autotile system for the GridMap node in the Godot Engine. AutoGri
 ## **Installation**
 1. Copy the "addons/AutoGrid" folder to your "addons" folder in the project directory. If you don't have any "addons" folder you can create it.<br>
 2. Set the AutoGrid as active in "Project>Project Settings>Plugins".<br>
-**Set Gif Here**
 
 ## **Usage**
 All AutoGrid settings are in the AutoGrid dock panel which is in same tab as the inspector panel.<br>
