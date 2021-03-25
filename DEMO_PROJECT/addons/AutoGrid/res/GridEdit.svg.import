@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/panel_inside.png-0d2716f1b421ceaae59a176a94f86267.stex"
+path="res://.import/GridEdit.svg-49a1a02c247064f95091adb9ab3fe622.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/panel_inside.png"
-dest_files=[ "res://.import/panel_inside.png-0d2716f1b421ceaae59a176a94f86267.stex" ]
+source_file="res://addons/AutoGrid/res/GridEdit.svg"
+dest_files=[ "res://.import/GridEdit.svg-49a1a02c247064f95091adb9ab3fe622.stex" ]
 
 [params]
 
@@ -24,11 +24,11 @@ flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
-svg/scale=1.0
+detect_3d=false
+svg/scale=5.0

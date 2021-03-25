@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Performance_Mode.png-3f7fb8a77dcca3dc80844e5ba306e2d3.stex"
+path="res://.import/ErrorSign.svg-2941aa11eb99a28b29252bf3a6f737f5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/Performance_Mode.png"
-dest_files=[ "res://.import/Performance_Mode.png-3f7fb8a77dcca3dc80844e5ba306e2d3.stex" ]
+source_file="res://addons/AutoGrid/res/ErrorSign.svg"
+dest_files=[ "res://.import/ErrorSign.svg-2941aa11eb99a28b29252bf3a6f737f5.stex" ]
 
 [params]
 
@@ -24,11 +24,11 @@ flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
-svg/scale=1.0
+detect_3d=false
+svg/scale=5.0
