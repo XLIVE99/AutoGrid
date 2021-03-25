@@ -16,6 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Gridmap_AT"
+run/main_scene="res://DEMO/Demo_Scene.tscn"
 config/icon="res://icon.png"
 
 [editor_plugins]

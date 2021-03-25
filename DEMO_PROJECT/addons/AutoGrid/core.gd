@@ -724,6 +724,7 @@ func create_autotile_info(dir : String):
 		if child.name.ends_with("_agrid"):
 			child.free()
 			waitAFrame = true
+			continue
 		if child.has_node("AutoGrid_Bitmask"):
 			var bitmask = child.get_node("AutoGrid_Bitmask")
 			var bitValue = bitmask.calculate_bit_value()
