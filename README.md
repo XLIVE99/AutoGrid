@@ -43,6 +43,10 @@ After setting all the bitmasks. Click to "Create Autotile Info" button located i
 - Create Autotile Info: Creates the autotile file.
 ![](images/Performance_Mode.png)
 
+## **Demo project**
+Demo project is designed for ***only Y axis*** and ***minimal 3x3*** mode, make sure you selected "Minimal 3x3" from the "Autotile Mode" and "Only Y" from the "Autotile Axis".<br>
+You can open the "Demo_Scene.tscn" and start painting. **For better visual you can rotate the tile to look upward by pressing "A".**
+
 ## **Limitations**
 - AutoGrid doesn't provide extended MeshLibrary, therefore all limitations on the MeshLibrary will remain.
 - You need to move your cursor to the scene while using edit mode shortcuts.
