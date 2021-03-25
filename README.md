@@ -51,4 +51,5 @@ You can open the "Demo_Scene.tscn" and start painting. **For better visual you c
 - AutoGrid doesn't provide extended MeshLibrary, therefore all limitations on the MeshLibrary will remain.
 - You need to move your cursor to the scene while using edit mode shortcuts.
 - Re-open the Godot Engine will set all the bitmasks as active (If no need to edit the bitmasks then you can ignore this). However, reloading the autotile info (if any available) will solve this.
-- since the GridMap node doesn't have a last edited cell variable, performance cost will increase with the cell count.
+- Since the GridMap node doesn't have a last edited cell variable, performance cost will increase with the cell count.
+- Gridmap's selection operations don't work with the AutoGrid.
