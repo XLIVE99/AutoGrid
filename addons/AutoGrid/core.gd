@@ -38,7 +38,7 @@ const AUTO_AXIS = [
 ]
 
 func handles(object) -> bool:
-	if currentMeshInstance && currentMeshInstance.has_node("AutoGrid_Bitmask"):
+	if is_instance_valid(currentMeshInstance) && currentMeshInstance.has_node("AutoGrid_Bitmask"):
 		currentMeshInstance.get_node("AutoGrid_Bitmask").deactivate()
 	if object is GridMap:
 		activateButton.hide()
@@ -64,7 +64,8 @@ func edit(object):
 
 func load_autotile_info():
 	if currentGridmap.mesh_library == null:
-		print("Mesh library is null.")
+		print("Mesh library is null. Please assign MeshLibrary on ", currentGridmap.name, " named GridMap node.")
+		return
 	
 	autotileDictionary.clear()
 	var fileDir : String
@@ -78,6 +79,7 @@ func load_autotile_info():
 		return
 	
 	load_autotile_info_from(fileDir)
+	print("AutoGrid is ready to go!")
 
 func load_autotile_info_from(fileDir : String, changeNameToId : bool = true):
 	var loadFile = File.new()
@@ -106,6 +108,12 @@ func editmode_changed(val):
 	editMode = val
 	if !editMode:
 		activateButton.hide()
+		if is_instance_valid(currentMeshInstance) && currentMeshInstance.has_node("AutoGrid_Bitmask"):
+			currentMeshInstance.get_node("AutoGrid_Bitmask").deactivate()
+	elif is_instance_valid(currentMeshInstance):
+		activateButton.show()
+		if currentMeshInstance.has_node("AutoGrid_Bitmask"):
+			currentMeshInstance.get_node("AutoGrid_Bitmask").activate()
 
 func axis_changed(val):
 	editAxis = val
@@ -116,9 +124,9 @@ func axis_changed(val):
 
 func forward_spatial_gui_input(camera, event) -> bool:
 	
-	if autotileEnabled && currentGridmap:
+	if autotileEnabled && is_instance_valid(currentGridmap):
 		gridmap_inputs(event)
-	if editMode && currentMeshInstance:
+	if editMode && is_instance_valid(currentMeshInstance):
 		return bitmask_inputs(camera, event)
 	
 	return false
@@ -410,8 +418,8 @@ func check_autotile():
 		if lastEditedCell == autogridId:
 			var orientation = currentGridmap.get_cell_item_orientation(lastEditedV.x, lastEditedV.y, lastEditedV.z)
 			if !autotileDictionary.has(str(bitVal)):
-				pass
 				#print("Corresponding tile not found: ", bitVal)
+				pass
 			else:
 				currentGridmap.set_cell_item(lastEditedV.x, lastEditedV.y, lastEditedV.z, autotileDictionary.get(str(bitVal)), orientation)
 				#print("setted: ", lastEditedV, " id: ", autotileDictionary.get(str(bitVal)))
@@ -651,6 +659,7 @@ func set_bitmask(bitmask : Node):
 	set_owner(bitmask)
 	bitmask.set_axis(editAxis)
 	bitmask.set_size(bitmaskSize)
+	bitmask.activate()
 
 func increase_bitmasks_size():
 	if bitmaskSize < 16:
@@ -724,6 +733,7 @@ func create_autotile_info(dir : String):
 		if child.name.ends_with("_agrid"):
 			child.free()
 			waitAFrame = true
+			continue
 		if child.has_node("AutoGrid_Bitmask"):
 			var bitmask = child.get_node("AutoGrid_Bitmask")
 			var bitValue = bitmask.calculate_bit_value()

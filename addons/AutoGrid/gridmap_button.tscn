@@ -68,9 +68,13 @@ margin_top = 2.0
 margin_right = 510.0
 margin_bottom = 22.0
 rect_min_size = Vector2( 0, 20 )
+mouse_filter = 1
 size_flags_horizontal = 3
 text = "Autotile"
 valign = 1
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Autotile_Check" type="CheckBox" parent="VBoxContainer/VBox/Autotile"]
 margin_left = 514.0
@@ -286,6 +290,7 @@ size_flags_vertical = 1
 custom_colors/font_color = Color( 0.568627, 0.568627, 0.568627, 1 )
 text = "Version 1.0"
 align = 2
+
 [connection signal="toggled" from="VBoxContainer/VBox/Autotile/Autotile_Check" to="." method="_on_Autotile_Check_toggled"]
 [connection signal="item_selected" from="VBoxContainer/VBox/Auto_Mode/Auto_Mode_Opt" to="." method="_on_OptionButton_item_selected"]
 [connection signal="item_selected" from="VBoxContainer/VBox/Auto_Axis/Auto_Axis_Opt" to="." method="_on_Auto_Axis_Opt_item_selected"]
