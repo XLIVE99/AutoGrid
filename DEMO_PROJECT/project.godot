@@ -10,18 +10,17 @@ config_version=4
 
 _global_script_classes=[  ]
 _global_script_class_icons={
-
 }
 
 [application]
 
 config/name="Gridmap_AT"
-run/main_scene="res://DEMO/Demo_Scene.tscn"
+run/main_scene="res://DEMO/Demo_Minimal_3x3.tscn"
 config/icon="res://icon.png"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "AutoGrid" )
+enabled=PoolStringArray( "res://addons/AutoGrid/plugin.cfg" )
 
 [rendering]
 
