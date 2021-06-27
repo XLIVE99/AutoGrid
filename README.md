@@ -46,6 +46,8 @@ After setting all the bitmasks. Click to "Create Autotile Info" button located i
 ## **Demo project**
 Demo project is designed for ***only Y axis*** and ***minimal 3x3*** mode, make sure you selected "Minimal 3x3" from the "Autotile Mode" and "Only Y" from the "Autotile Axis".<br>
 You can open the "Demo_Scene.tscn" and start painting. **For better visual you can rotate the tile to look upward by pressing "A".**
+### **Resources used at demo**
+- "Dungeon Tileset" by buch (https://opengameart.org/users/buch) is licensed under Creative Commons Attribution (https://creativecommons.org/publicdomain/zero/1.0/).
 
 ## **Limitations**
 - AutoGrid doesn't provide extended MeshLibrary, therefore all limitations on the MeshLibrary will remain.
