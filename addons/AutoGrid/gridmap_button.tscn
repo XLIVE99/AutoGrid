@@ -55,7 +55,7 @@ rect_min_size = Vector2( 0, 15 )
 [node name="VBox" type="VBoxContainer" parent="VBoxContainer"]
 margin_top = 108.0
 margin_right = 1024.0
-margin_bottom = 414.0
+margin_bottom = 438.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -181,6 +181,7 @@ pressed = true
 text = "On"
 
 [node name="Buttons" type="HBoxContainer" parent="VBoxContainer"]
+visible = false
 margin_top = 418.0
 margin_right = 1024.0
 margin_bottom = 438.0
@@ -243,7 +244,7 @@ margin_right = 1024.0
 margin_bottom = 39.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 3
-text = "Please do not change automatically created node names! AutoGrid recognize its nodes from the node names!"
+text = "Please do not change automatically created node names! And do not change .agrid file paths!"
 autowrap = true
 
 [node name="HSeparator4" type="HSeparator" parent="VBoxContainer"]
@@ -288,7 +289,7 @@ margin_right = 1024.0
 margin_bottom = 600.0
 size_flags_vertical = 1
 custom_colors/font_color = Color( 0.568627, 0.568627, 0.568627, 1 )
-text = "Version 1.0"
+text = "Version 1.0.1"
 align = 2
 
 [connection signal="toggled" from="VBoxContainer/VBox/Autotile/Autotile_Check" to="." method="_on_Autotile_Check_toggled"]

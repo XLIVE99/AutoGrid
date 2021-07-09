@@ -64,7 +64,7 @@ func edit(object):
 
 func load_autotile_info():
 	if currentGridmap.mesh_library == null:
-		print("Mesh library is null. Please assign MeshLibrary on ", currentGridmap.name, " named GridMap node.")
+		print("--- AUTOGRID ERROR --- Mesh library is null. Please assign MeshLibrary on ", currentGridmap.name, " named GridMap node. Then re-select the GridMap node.")
 		return
 	
 	autotileDictionary.clear()
@@ -75,16 +75,16 @@ func load_autotile_info():
 			autogridId = i
 	
 	if fileDir.empty():
-		print("Autotile is not available for this gridmap. Please create autotile or disable autotile from AutoGrid window on the right")
+		print("--- AUTOGRID WARNING --- .agrid file couldn't find for this GridMap node. Please create autotile or disable autotile from AutoGrid window")
 		return
 	
 	load_autotile_info_from(fileDir)
-	print("AutoGrid is ready to go!")
+	print("--- AUTOGRID INFO --- AutoGrid is ready to use!")
 
 func load_autotile_info_from(fileDir : String, changeNameToId : bool = true):
 	var loadFile = File.new()
 	if loadFile.open(fileDir, File.READ) != OK:
-		print("File couldn't find at ", fileDir)
+		print("--- AUTOGRID ERROR --- File couldn't find at ", fileDir)
 		loadFile.close()
 		return
 	var content = loadFile.get_as_text()
@@ -694,7 +694,7 @@ func change_icon(iconNode : Node):
 func reload_autotile_info():
 	var children = get_editor_interface().get_edited_scene_root().get_children()
 	if children.size() == 0:
-		print("Empty scene!")
+		print("--- AUTOGRID ERROR --- Empty scene!")
 		return
 	
 	var fileDir : String
@@ -704,7 +704,7 @@ func reload_autotile_info():
 			break
 	
 	if fileDir.empty():
-		print("autotile info couldn't find.")
+		print("--- AUTOGRID ERROR --- autotile info couldn't find.")
 		return
 	
 	load_autotile_info_from(fileDir, false)
@@ -725,7 +725,7 @@ func create_autotile_info(dir : String):
 	var sceneRoot = get_editor_interface().get_edited_scene_root()
 	var children = sceneRoot.get_children()
 	if children.size() == 0:
-		print("Empty scene!")
+		print("--- AUTOGRID ERROR --- Empty scene!")
 		return
 	var iconHolder = children[0]
 	var waitAFrame = false

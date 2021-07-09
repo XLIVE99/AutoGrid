@@ -16,6 +16,7 @@ func _on_Autotile_Check_toggled(button_pressed):
 
 func _on_Edit_Mode_Checked_toggled(button_pressed):
 	core.editMode = button_pressed
+	$VBoxContainer/Buttons.visible = button_pressed
 
 func _on_Create_Autotile_pressed():
 	core.create_autotile_pressed()
