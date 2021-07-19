@@ -29,3 +29,6 @@ func _on_CheckBox_toggled(button_pressed):
 
 func _on_Auto_Axis_Opt_item_selected(index):
 	core.autoAxis = index
+
+func _on_Auto_Scan_Axis_Opt_item_selected(index):
+	core.scanAxis = index

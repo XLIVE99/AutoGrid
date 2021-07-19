@@ -1,5 +1,5 @@
 # AutoGrid
-###### Version 1.0.1
+###### Version 1.1
 AutoGrid is an autotile system for the GridMap node in the Godot Engine. AutoGrid works similar to the TileMap node.
 
 ## **Installation**
@@ -37,6 +37,7 @@ After setting all the bitmasks. Click to "Create Autotile Info" button located i
   - Full 3x3: Checks every corner for fit the perfect tile for that place (Same as tilemap).
   - Minimal 3x3: Checks the corners three by three (Same as tilemap).
 - Autotile Axis: Limits the autotile check axis.
+- Autotile Scan Axis: Scans surrounding to apply autotile (If you are working on 3D environment then leave this as "Y axis". If you are working on 2D environment then select which axis is facing the tiles)
 - Edit Mode: Enables the bitmap edit button.
 - Performance Mode: If enabled only checks for new tiles, do not check for repainted tiles (If map is too big, enabling this might increase the performance).
 - Reload Autotile Info: Reloads the bitmasks value. (Will shown if Edit mode is enabled)

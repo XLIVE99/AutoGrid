@@ -18,8 +18,9 @@ var lastSize : int = 0
 var lastVec := Vector3.ZERO
 
 var bitmaskSize : float = 1.0
-var editAxis = 0 setget axis_changed#0=All, 1=AxisX, 2=AxisY, 3=AxisZ
-var autoAxis = 0 #Check the AUTO_AXIS
+var editAxis : int = 0 setget axis_changed#0=All, 1=AxisX, 2=AxisY, 3=AxisZ
+var autoAxis : int = 0 #Check the AUTO_AXIS
+var scanAxis : int = 1 #0=AxisX, 1=AxisY, 2=AxisZ
 
 var autotileDictionary : Dictionary
 var autogridId : int
@@ -53,6 +54,7 @@ func edit(object):
 	if object is GridMap:
 		currentGridmap = object
 		currentMeshInstance = null
+		lastSize = currentGridmap.get_used_cells().size()
 		if autotileEnabled:
 			load_autotile_info()
 	elif object is MeshInstance:
@@ -137,7 +139,7 @@ func gridmap_inputs(event):
 			if event.is_pressed():
 				getDraw = true
 				erasing = false
-				lastSize = max(lastSize - 1, 0)
+				#lastSize = max(lastSize - 1, 0)
 				add_to_edited_cells()
 			else:
 				getDraw = false
@@ -148,7 +150,7 @@ func gridmap_inputs(event):
 			if event.is_pressed():
 				getDraw = true
 				erasing = true
-				lastSize = lastSize + 1
+				#lastSize = lastSize + 1
 				add_to_edited_cells()
 			else:
 				getDraw = false
@@ -177,7 +179,8 @@ func bitmask_inputs(camera : Camera, event : InputEvent) -> bool:
 func add_to_edited_cells():
 	#Calling get_used_cells require lots of work, use it less!!
 	var cells = currentGridmap.get_used_cells()
-	var currentSize = cells.size()
+	var currentSize : int = cells.size()
+	
 	if currentSize == 0:
 		return
 	if currentSize != lastSize:
@@ -211,22 +214,7 @@ func check_autotile():
 			#print("Its not autotile: ", currentGridmap.mesh_library.get_item_name(lastEditedCell))
 			continue
 		
-		if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z + 1) != -1:
-			bitVal |= 1 #2^0
-			update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z + 1))
-			
-		if currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z) != -1:
-			bitVal |= 4 #2^2
-			update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z))
-		
-		if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z - 1) != -1:
-			bitVal |= 16 #2^4
-			update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z - 1))
-		
-		if currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z) != -1:
-			bitVal |= 64 #2^6
-			update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z))
-		
+		#Universal scans
 		if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z) != -1:
 			bitVal |= 256 #2^8
 			update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z))
@@ -247,25 +235,111 @@ func check_autotile():
 			bitVal |= 32768 #2^15
 			update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z))
 		
-		if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z + 1) != -1:
-			bitVal |= 131072 #2^17
-			update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z + 1))
-		
-		if currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z) != -1:
-			bitVal |= 524288 #2^19
-			update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z))
-		
-		if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z - 1) != -1:
-			bitVal |= 2097152 #2^21
-			update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z - 1))
-		
-		if currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z) != -1:
-			bitVal |= 8388608 #2^23
-			update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z))
-		
 		if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z) != -1:
 			bitVal |= 33554432 #2^25
 			update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z))
+		
+		#X axis scan
+		if scanAxis == 0:
+			if currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z) != -1:
+				bitVal |= 4 #2^2
+				update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z))
+				
+			if currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z) != -1:
+				bitVal |= 64 #2^6
+				update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z))
+			
+			if currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z + 1) != -1:
+				bitVal |= 1024 #2^10
+				update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z + 1))
+			
+			if currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z - 1) != -1:
+				bitVal |= 4096 #2^12
+				update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z - 1))
+			
+			if currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z - 1) != -1:
+				bitVal |= 16384 #2^14
+				update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z - 1))
+			
+			if currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z + 1) != -1:
+				bitVal |= 65536 #2^16
+				update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z + 1))
+			
+			if currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z) != -1:
+				bitVal |= 524288 #2^19
+				update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z))
+			
+			if currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z) != -1:
+				bitVal |= 8388608 #2^23
+				update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z))
+		
+		#Y axis scan
+		elif scanAxis == 1:
+			if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z + 1) != -1:
+				bitVal |= 1 #2^0
+				update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z + 1))
+				
+			if currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z) != -1:
+				bitVal |= 4 #2^2
+				update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z))
+			
+			if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z - 1) != -1:
+				bitVal |= 16 #2^4
+				update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z - 1))
+			
+			if currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z) != -1:
+				bitVal |= 64 #2^6
+				update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z))
+			
+			if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z + 1) != -1:
+				bitVal |= 131072 #2^17
+				update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z + 1))
+			
+			if currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z) != -1:
+				bitVal |= 524288 #2^19
+				update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z))
+			
+			if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z - 1) != -1:
+				bitVal |= 2097152 #2^21
+				update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z - 1))
+			
+			if currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z) != -1:
+				bitVal |= 8388608 #2^23
+				update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z))
+		
+		#Z scan axis
+		elif scanAxis == 2:
+			if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z + 1) != -1:
+				bitVal |= 1 #2^0
+				update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z + 1))
+				
+			if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z - 1) != -1:
+				bitVal |= 16 #2^4
+				update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z - 1))
+			
+			if currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z + 1) != -1:
+				bitVal |= 1024 #2^10
+				update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z + 1))
+			
+			if currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z - 1) != -1:
+				bitVal |= 4096 #2^12
+				update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z - 1))
+			
+			if currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z - 1) != -1:
+				bitVal |= 16384 #2^14
+				update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z - 1))
+			
+			if currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z + 1) != -1:
+				bitVal |= 65536 #2^16
+				update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z + 1))
+			
+			if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z + 1) != -1:
+				bitVal |= 131072 #2^17
+				update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z + 1))
+			
+			if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z - 1) != -1:
+				bitVal |= 2097152 #2^21
+				update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z - 1))
 		
 		if bitmaskMode == 0: #full 3x3
 			if currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z + 1) != -1:
@@ -284,22 +358,6 @@ func check_autotile():
 				bitVal |= 128 #2^7
 				update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z + 1))
 			
-			if currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z + 1) != -1:
-				bitVal |= 1024 #2^10
-				update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z + 1))
-			
-			if currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z - 1) != -1:
-				bitVal |= 4096 #2^12
-				update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z - 1))
-			
-			if currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z - 1) != -1:
-				bitVal |= 16384 #2^14
-				update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z - 1))
-			
-			if currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z + 1) != -1:
-				bitVal |= 65536 #2^16
-				update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z + 1))
-			
 			if currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z + 1) != -1:
 				bitVal |= 262144 #2^18
 				update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z + 1))
@@ -315,103 +373,352 @@ func check_autotile():
 			if currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z + 1) != -1:
 				bitVal |= 16777216 #2^24
 				update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z + 1))
+			
+			if scanAxis == 0: #X scan axis
+				if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z + 1) != -1:
+					bitVal |= 1 #2^0
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z + 1))
+				
+				if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z - 1) != -1:
+					bitVal |= 16 #2^4
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z - 1))
+				
+				if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z + 1) != -1:
+					bitVal |= 131072 #2^17
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z + 1))
+				
+				if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z - 1) != -1:
+					bitVal |= 2097152 #2^21
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z - 1))
+			
+			elif scanAxis == 1: #Y scan axis
+				if currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z + 1) != -1:
+					bitVal |= 1024 #2^10
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z + 1))
+				
+				if currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z - 1) != -1:
+					bitVal |= 4096 #2^12
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z - 1))
+				
+				if currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z - 1) != -1:
+					bitVal |= 16384 #2^14
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z - 1))
+				
+				if currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z + 1) != -1:
+					bitVal |= 65536 #2^16
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z + 1))
+			
+			elif scanAxis == 2: #Z scan axis
+				if currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z) != -1:
+					bitVal |= 4 #2^2
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z))
+				
+				if currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z) != -1:
+					bitVal |= 64 #2^6
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z))
+				
+				if currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z) != -1:
+					bitVal |= 524288 #2^19
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z))
+				
+				if currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z) != -1:
+					bitVal |= 8388608 #2^23
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z))
 		
 		elif bitmaskMode == 1: #minimal 3x3
-			if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z + 1) != -1\
-			&& currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z + 1) != -1\
-			&& currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z) != -1:
-				bitVal |= 7 #2^0 + 2^1 + 2^2
-				update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z + 1))
-				update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z + 1))
-				update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z))
+			if scanAxis == 0: #X scan axis
+				#First ---------------
+				if currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z + 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z + 1) != -1:
+					bitVal |= 65728 #2^6 + 2^7 + 2^16
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z))
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z + 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z + 1))
+				
+				if currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z + 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z + 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z) != -1:
+					bitVal |= 25231360 #2^16 + 2^24 + 2^23
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z + 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z + 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z))
+				
+				if currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z - 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z - 1) != -1:
+					bitVal |= 12599296 #2^23 + 2^22 + 2^14
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z - 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z - 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z))
+				
+				if currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z - 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z - 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z) != -1:
+					bitVal |= 16480 #2^14 + 2^5 + 2^6
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z - 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z - 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z))
+				#Second ---------------
+				if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z + 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y, lastEditedV.z + 1) != -1:
+					bitVal |= 769 #2^8 + 2^0 + 2^9
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z))
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z + 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y, lastEditedV.z + 1))
+				
+				if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y, lastEditedV.z + 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z + 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z) != -1:
+					bitVal |= 33686016 #2^9 + 2^17 + 2^25
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y, lastEditedV.z + 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z + 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z))
+				
+				if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z - 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y, lastEditedV.z - 1) != -1:
+					bitVal |= 35659776 #2^25 + 2^21 + 2^13
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z))
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z - 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y, lastEditedV.z - 1))
+				
+				if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y, lastEditedV.z - 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z - 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z) != -1:
+					bitVal |= 8464 #2^13 + 2^4 + 2^8
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y, lastEditedV.z - 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z - 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z))
+				#Third ---------------
+				if currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z + 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z + 1) != -1:
+					bitVal |= 1030 #2^2 + 2^1 + 2^10
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z))
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z + 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z + 1))
+				
+				if currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z + 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z + 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z) != -1:
+					bitVal |= 787456 #2^10 + 2^18 + 2^19
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z + 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z + 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z))
+				
+				if currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z - 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z - 1) != -1:
+					bitVal |= 1576960 #2^19 + 2^20 + 2^12
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z))
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z - 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z - 1))
+				
+				if currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z - 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z - 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z) != -1:
+					bitVal |= 4108 #2^12 + 2^3 + 2^2
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z - 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z - 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z))
 			
-			if currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z) != -1\
-			&& currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z - 1) != -1\
-			&& currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z - 1) != -1:
-				bitVal |= 28 #2^2 + 2^3 + 2^4
-				update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z))
-				update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z - 1))
-				update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z - 1))
+			elif scanAxis == 1: #Y scan axis
+				#First ---------------
+				if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z + 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z + 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z) != -1:
+					bitVal |= 7 #2^0 + 2^1 + 2^2
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z + 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z + 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z))
+				
+				if currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z - 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z - 1) != -1:
+					bitVal |= 28 #2^2 + 2^3 + 2^4
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z))
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z - 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z - 1))
+				
+				if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z - 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z - 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z) != -1:
+					bitVal |= 112 #2^4 + 2^5 + 2^6
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z - 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z - 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z))
+				
+				if currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z + 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z + 1) != -1:
+					bitVal |= 193 #2^6 + 2^7 + 2^0
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z))
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z + 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z + 1))
+				#Second ---------------
+				if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y, lastEditedV.z + 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z + 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z) != -1:
+					bitVal |= 3584 #2^9 + 2^10 + 2^11
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y, lastEditedV.z + 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z + 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z))
+				
+				if currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z - 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y, lastEditedV.z - 1) != -1:
+					bitVal |= 14336 #2^11 + 2^12 + 2^13
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z))
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z - 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y, lastEditedV.z - 1))
+				
+				if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y, lastEditedV.z - 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z - 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z) != -1:
+					bitVal |= 57344 #2^13 + 2^14 + 2^15
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y, lastEditedV.z - 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z - 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z))
+				
+				if currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z + 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y, lastEditedV.z + 1) != -1:
+					bitVal |= 98816 #2^15 + 2^16 + 2^9
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z))
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z + 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y, lastEditedV.z + 1))
+				#Third ---------------
+				if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z + 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z + 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z) != -1:
+					bitVal |= 917504 #2^17 + 2^18 + 2^19
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z + 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z + 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z))
+				
+				if currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z - 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z - 1) != -1:
+					bitVal |= 3670016 #2^19 + 2^20 + 2^21
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z))
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z - 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z - 1))
+				
+				if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z - 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z - 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z) != -1:
+					bitVal |= 14680064 #2^21 + 2^22 + 2^23
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z - 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z - 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z))
+				
+				if currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z + 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z + 1) != -1:
+					bitVal |= 25296896 #2^23 + 2^24 + 2^17
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z))
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z + 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z + 1))
 			
-			if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z - 1) != -1\
-			&& currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z - 1) != -1\
-			&& currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z) != -1:
-				bitVal |= 112 #2^4 + 2^5 + 2^6
-				update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z - 1))
-				update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z - 1))
-				update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z))
-			
-			if currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z) != -1\
-			&& currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z + 1) != -1\
-			&& currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z + 1) != -1:
-				bitVal |= 193 #2^6 + 2^7 + 2^0
-				update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z))
-				update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z + 1))
-				update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z + 1))
-			
-			if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y, lastEditedV.z + 1) != -1\
-			&& currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z + 1) != -1\
-			&& currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z) != -1:
-				bitVal |= 3584 #2^9 + 2^10 + 2^11
-				update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y, lastEditedV.z + 1))
-				update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z + 1))
-				update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z))
-			
-			if currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z) != -1\
-			&& currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z - 1) != -1\
-			&& currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y, lastEditedV.z - 1) != -1:
-				bitVal |= 14336 #2^11 + 2^12 + 2^13
-				update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z))
-				update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z - 1))
-				update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y, lastEditedV.z - 1))
-			
-			if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y, lastEditedV.z - 1) != -1\
-			&& currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z - 1) != -1\
-			&& currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z) != -1:
-				bitVal |= 57344 #2^13 + 2^14 + 2^15
-				update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y, lastEditedV.z - 1))
-				update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z - 1))
-				update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z))
-			
-			if currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z) != -1\
-			&& currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z + 1) != -1\
-			&& currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y, lastEditedV.z + 1) != -1:
-				bitVal |= 98816 #2^15 + 2^16 + 2^9
-				update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z))
-				update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z + 1))
-				update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y, lastEditedV.z + 1))
-			
-			if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z + 1) != -1\
-			&& currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z + 1) != -1\
-			&& currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z) != -1:
-				bitVal |= 917504 #2^17 + 2^18 + 2^19
-				update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z + 1))
-				update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z + 1))
-				update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z))
-			
-			if currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z) != -1\
-			&& currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z - 1) != -1\
-			&& currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z - 1) != -1:
-				bitVal |= 3670016 #2^19 + 2^20 + 2^21
-				update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z))
-				update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z - 1))
-				update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z - 1))
-			
-			if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z - 1) != -1\
-			&& currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z - 1) != -1\
-			&& currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z) != -1:
-				bitVal |= 14680064 #2^21 + 2^22 + 2^23
-				update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z - 1))
-				update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z - 1))
-				update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z))
-			
-			if currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z) != -1\
-			&& currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z + 1) != -1\
-			&& currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z + 1) != -1:
-				bitVal |= 25296896 #2^23 + 2^24 + 2^17
-				update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z))
-				update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z + 1))
-				update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z + 1))
+			elif scanAxis == 2: #Z scan axis
+				#First ---------------
+				if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z - 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z - 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z - 1) != -1:
+					bitVal |= 16432 #2^4 + 2^5 + 2^14
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z - 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z - 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z - 1))
+				
+				if currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z - 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z - 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z - 1) != -1:
+					bitVal |= 6307840 #2^14 + 2^22 + 2^21
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z - 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z - 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z - 1))
+				
+				if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z - 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z - 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z - 1) != -1:
+					bitVal |= 3149824 #2^21 + 2^20 + 2^12
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z - 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z - 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z - 1))
+				
+				if currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z - 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z - 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z - 1) != -1:
+					bitVal |= 4120 #2^12 + 2^3 + 2^4
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z - 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z - 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z - 1))
+				#Second ---------------
+				if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z) != -1:
+					bitVal |= 33088 #2^8 + 2^6 + 2^15
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z))
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z))
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z))
+				
+				if currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z) != -1:
+					bitVal |= 41975808 #2^15 + 2^23 + 2^25
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z))
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z))
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z))
+				
+				if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z) != -1:
+					bitVal |= 34080768 #2^25 + 2^19 + 2^11
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z))
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z))
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z))
+				
+				if currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z) != -1:
+					bitVal |= 2308 #2^11 + 2^2 + 2^8
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z))
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z))
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z))
+				#Third ---------------
+				if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z + 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z + 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z + 1) != -1:
+					bitVal |= 65665 #2^0 + 2^7 + 2^16
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z + 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y - 1, lastEditedV.z + 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z + 1))
+				
+				if currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z + 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z + 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z + 1) != -1:
+					bitVal |= 16973824 #2^16 + 2^24 + 2^17
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y, lastEditedV.z + 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x - 1, lastEditedV.y + 1, lastEditedV.z + 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z + 1))
+				
+				if currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z + 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z + 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z + 1) != -1:
+					bitVal |= 394240 #2^17 + 2^18 + 2^10
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y + 1, lastEditedV.z + 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y + 1, lastEditedV.z + 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z + 1))
+				
+				if currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z + 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z + 1) != -1\
+				&& currentGridmap.get_cell_item(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z + 1) != -1:
+					bitVal |= 1027 #2^10 + 2^1 + 2^0
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y, lastEditedV.z + 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x + 1, lastEditedV.y - 1, lastEditedV.z + 1))
+					update_autotile_from_corner(Vector3(lastEditedV.x, lastEditedV.y - 1, lastEditedV.z + 1))
 		
 		bitVal &= AUTO_AXIS[autoAxis]
 		
@@ -436,18 +743,7 @@ func update_autotile_from_corner(cell : Vector3):
 	var result = cell
 	var bitVal : int
 	
-	if currentGridmap.get_cell_item(result.x, result.y - 1, result.z + 1) != -1:
-		bitVal |= 1 #2^0
-	
-	if currentGridmap.get_cell_item(result.x + 1, result.y - 1, result.z) != -1:
-		bitVal |= 4 #2^2
-	
-	if currentGridmap.get_cell_item(result.x, result.y - 1, result.z - 1) != -1:
-		bitVal |= 16 #2^4
-	
-	if currentGridmap.get_cell_item(result.x - 1, result.y - 1, result.z) != -1:
-		bitVal |= 64 #2^6
-	
+	#Universal scans
 	if currentGridmap.get_cell_item(result.x, result.y - 1, result.z) != -1:
 		bitVal |= 256 #2^8
 	
@@ -463,20 +759,86 @@ func update_autotile_from_corner(cell : Vector3):
 	if currentGridmap.get_cell_item(result.x - 1, result.y, result.z) != -1:
 		bitVal |= 32768 #2^15
 	
-	if currentGridmap.get_cell_item(result.x, result.y + 1, result.z + 1) != -1:
-		bitVal |= 131072 #2^17
-	
-	if currentGridmap.get_cell_item(result.x + 1, result.y + 1, result.z) != -1:
-		bitVal |= 524288 #2^19
-	
-	if currentGridmap.get_cell_item(result.x, result.y + 1, result.z - 1) != -1:
-		bitVal |= 2097152 #2^21
-	
-	if currentGridmap.get_cell_item(result.x - 1, result.y + 1, result.z) != -1:
-		bitVal |= 8388608 #2^23
-	
 	if currentGridmap.get_cell_item(result.x, result.y + 1, result.z) != -1:
 		bitVal |= 33554432 #2^25
+	
+	#X axis scan
+	if scanAxis == 0:
+		if currentGridmap.get_cell_item(result.x + 1, result.y - 1, result.z) != -1:
+			bitVal |= 4 #2^2
+			
+		if currentGridmap.get_cell_item(result.x - 1, result.y - 1, result.z) != -1:
+			bitVal |= 64 #2^6
+		
+		if currentGridmap.get_cell_item(result.x + 1, result.y, result.z + 1) != -1:
+			bitVal |= 1024 #2^10
+		
+		if currentGridmap.get_cell_item(result.x + 1, result.y, result.z - 1) != -1:
+			bitVal |= 4096 #2^12
+		
+		if currentGridmap.get_cell_item(result.x - 1, result.y, result.z - 1) != -1:
+			bitVal |= 16384 #2^14
+		
+		if currentGridmap.get_cell_item(result.x - 1, result.y, result.z + 1) != -1:
+			bitVal |= 65536 #2^16
+		
+		if currentGridmap.get_cell_item(result.x + 1, result.y + 1, result.z) != -1:
+			bitVal |= 524288 #2^19
+		
+		if currentGridmap.get_cell_item(result.x - 1, result.y + 1, result.z) != -1:
+			bitVal |= 8388608 #2^23
+	
+	#Y axis scan
+	elif scanAxis == 1:
+		if currentGridmap.get_cell_item(result.x, result.y - 1, result.z + 1) != -1:
+			bitVal |= 1 #2^0
+			
+		if currentGridmap.get_cell_item(result.x + 1, result.y - 1, result.z) != -1:
+			bitVal |= 4 #2^2
+		
+		if currentGridmap.get_cell_item(result.x, result.y - 1, result.z - 1) != -1:
+			bitVal |= 16 #2^4
+		
+		if currentGridmap.get_cell_item(result.x - 1, result.y - 1, result.z) != -1:
+			bitVal |= 64 #2^6
+		
+		if currentGridmap.get_cell_item(result.x, result.y + 1, result.z + 1) != -1:
+			bitVal |= 131072 #2^17
+		
+		if currentGridmap.get_cell_item(result.x + 1, result.y + 1, result.z) != -1:
+			bitVal |= 524288 #2^19
+		
+		if currentGridmap.get_cell_item(result.x, result.y + 1, result.z - 1) != -1:
+			bitVal |= 2097152 #2^21
+		
+		if currentGridmap.get_cell_item(result.x - 1, result.y + 1, result.z) != -1:
+			bitVal |= 8388608 #2^23
+	
+	#Z scan axis
+	elif scanAxis == 2:
+		if currentGridmap.get_cell_item(result.x, result.y - 1, result.z + 1) != -1:
+			bitVal |= 1 #2^0
+			
+		if currentGridmap.get_cell_item(result.x, result.y - 1, result.z - 1) != -1:
+			bitVal |= 16 #2^4
+		
+		if currentGridmap.get_cell_item(result.x + 1, result.y, result.z + 1) != -1:
+			bitVal |= 1024 #2^10
+		
+		if currentGridmap.get_cell_item(result.x + 1, result.y, result.z - 1) != -1:
+			bitVal |= 4096 #2^12
+		
+		if currentGridmap.get_cell_item(result.x - 1, result.y, result.z - 1) != -1:
+			bitVal |= 16384 #2^14
+		
+		if currentGridmap.get_cell_item(result.x - 1, result.y, result.z + 1) != -1:
+			bitVal |= 65536 #2^16
+		
+		if currentGridmap.get_cell_item(result.x, result.y + 1, result.z + 1) != -1:
+			bitVal |= 131072 #2^17
+		
+		if currentGridmap.get_cell_item(result.x, result.y + 1, result.z - 1) != -1:
+			bitVal |= 2097152 #2^21
 	
 	if bitmaskMode == 0: #full 3x3
 		if currentGridmap.get_cell_item(result.x + 1, result.y - 1, result.z + 1) != -1:
@@ -491,18 +853,6 @@ func update_autotile_from_corner(cell : Vector3):
 		if currentGridmap.get_cell_item(result.x - 1, result.y - 1, result.z + 1) != -1:
 			bitVal |= 128 #2^7
 		
-		if currentGridmap.get_cell_item(result.x + 1, result.y, result.z + 1) != -1:
-			bitVal |= 1024 #2^10
-		
-		if currentGridmap.get_cell_item(result.x + 1, result.y, result.z - 1) != -1:
-			bitVal |= 4096 #2^12
-		
-		if currentGridmap.get_cell_item(result.x - 1, result.y, result.z - 1) != -1:
-			bitVal |= 16384 #2^14
-		
-		if currentGridmap.get_cell_item(result.x - 1, result.y, result.z + 1) != -1:
-			bitVal |= 65536 #2^16
-		
 		if currentGridmap.get_cell_item(result.x + 1, result.y + 1, result.z + 1) != -1:
 			bitVal |= 262144 #2^18
 		
@@ -515,66 +865,231 @@ func update_autotile_from_corner(cell : Vector3):
 		if currentGridmap.get_cell_item(result.x - 1, result.y + 1, result.z + 1) != -1:
 			bitVal |= 16777216 #2^24
 		
+		if scanAxis == 0: #X scan axis
+			if currentGridmap.get_cell_item(result.x, result.y - 1, result.z + 1) != -1:
+				bitVal |= 1 #2^0
+			
+			if currentGridmap.get_cell_item(result.x, result.y - 1, result.z - 1) != -1:
+				bitVal |= 16 #2^4
+			
+			if currentGridmap.get_cell_item(result.x, result.y + 1, result.z + 1) != -1:
+				bitVal |= 131072 #2^17
+			
+			if currentGridmap.get_cell_item(result.x, result.y + 1, result.z - 1) != -1:
+				bitVal |= 2097152 #2^21
+		
+		elif scanAxis == 1: #Y scan axis
+			if currentGridmap.get_cell_item(result.x + 1, result.y, result.z + 1) != -1:
+				bitVal |= 1024 #2^10
+			
+			if currentGridmap.get_cell_item(result.x + 1, result.y, result.z - 1) != -1:
+				bitVal |= 4096 #2^12
+			
+			if currentGridmap.get_cell_item(result.x - 1, result.y, result.z - 1) != -1:
+				bitVal |= 16384 #2^14
+			
+			if currentGridmap.get_cell_item(result.x - 1, result.y, result.z + 1) != -1:
+				bitVal |= 65536 #2^16
+		
+		elif scanAxis == 2: #Z scan axis
+			if currentGridmap.get_cell_item(result.x + 1, result.y - 1, result.z) != -1:
+				bitVal |= 4 #2^2
+			
+			if currentGridmap.get_cell_item(result.x - 1, result.y - 1, result.z) != -1:
+				bitVal |= 64 #2^6
+			
+			if currentGridmap.get_cell_item(result.x + 1, result.y + 1, result.z) != -1:
+				bitVal |= 524288 #2^19
+			
+			if currentGridmap.get_cell_item(result.x - 1, result.y + 1, result.z) != -1:
+				bitVal |= 8388608 #2^23
+	
 	elif bitmaskMode == 1: #minimal 3x3
-		if currentGridmap.get_cell_item(result.x, result.y - 1, result.z + 1) != -1\
-		&& currentGridmap.get_cell_item(result.x + 1, result.y - 1, result.z + 1) != -1\
-		&& currentGridmap.get_cell_item(result.x + 1, result.y - 1, result.z) != -1:
-			bitVal |= 7 #2^0 + 2^1 + 2^2
+		if scanAxis == 0: #X scan axis
+			#First ---------------
+			if currentGridmap.get_cell_item(result.x - 1, result.y - 1, result.z) != -1\
+			&& currentGridmap.get_cell_item(result.x - 1, result.y - 1, result.z + 1) != -1\
+			&& currentGridmap.get_cell_item(result.x - 1, result.y, result.z + 1) != -1:
+				bitVal |= 65728 #2^6 + 2^7 + 2^16
+			
+			if currentGridmap.get_cell_item(result.x - 1, result.y, result.z + 1) != -1\
+			&& currentGridmap.get_cell_item(result.x - 1, result.y + 1, result.z + 1) != -1\
+			&& currentGridmap.get_cell_item(result.x - 1, result.y + 1, result.z) != -1:
+				bitVal |= 25231360 #2^16 + 2^24 + 2^23
+			
+			if currentGridmap.get_cell_item(result.x - 1, result.y + 1, result.z) != -1\
+			&& currentGridmap.get_cell_item(result.x - 1, result.y + 1, result.z - 1) != -1\
+			&& currentGridmap.get_cell_item(result.x - 1, result.y, result.z - 1) != -1:
+				bitVal |= 12599296 #2^23 + 2^22 + 2^14
+			
+			if currentGridmap.get_cell_item(result.x - 1, result.y, result.z - 1) != -1\
+			&& currentGridmap.get_cell_item(result.x - 1, result.y - 1, result.z - 1) != -1\
+			&& currentGridmap.get_cell_item(result.x - 1, result.y - 1, result.z) != -1:
+				bitVal |= 16480 #2^14 + 2^5 + 2^6
+			#Second ---------------
+			if currentGridmap.get_cell_item(result.x, result.y - 1, result.z) != -1\
+			&& currentGridmap.get_cell_item(result.x, result.y - 1, result.z + 1) != -1\
+			&& currentGridmap.get_cell_item(result.x, result.y, result.z + 1) != -1:
+				bitVal |= 769 #2^8 + 2^0 + 2^9
+			
+			if currentGridmap.get_cell_item(result.x, result.y, result.z + 1) != -1\
+			&& currentGridmap.get_cell_item(result.x, result.y + 1, result.z + 1) != -1\
+			&& currentGridmap.get_cell_item(result.x, result.y + 1, result.z) != -1:
+				bitVal |= 33686016 #2^9 + 2^17 + 2^25
+			
+			if currentGridmap.get_cell_item(result.x, result.y + 1, result.z) != -1\
+			&& currentGridmap.get_cell_item(result.x, result.y + 1, result.z - 1) != -1\
+			&& currentGridmap.get_cell_item(result.x, result.y, result.z - 1) != -1:
+				bitVal |= 35659776 #2^25 + 2^21 + 2^13
+			
+			if currentGridmap.get_cell_item(result.x, result.y, result.z - 1) != -1\
+			&& currentGridmap.get_cell_item(result.x, result.y - 1, result.z - 1) != -1\
+			&& currentGridmap.get_cell_item(result.x, result.y - 1, result.z) != -1:
+				bitVal |= 8464 #2^13 + 2^4 + 2^8
+			#Third ---------------
+			if currentGridmap.get_cell_item(result.x + 1, result.y - 1, result.z) != -1\
+			&& currentGridmap.get_cell_item(result.x + 1, result.y - 1, result.z + 1) != -1\
+			&& currentGridmap.get_cell_item(result.x + 1, result.y, result.z + 1) != -1:
+				bitVal |= 1030 #2^2 + 2^1 + 2^10
+			
+			if currentGridmap.get_cell_item(result.x + 1, result.y, result.z + 1) != -1\
+			&& currentGridmap.get_cell_item(result.x + 1, result.y + 1, result.z + 1) != -1\
+			&& currentGridmap.get_cell_item(result.x + 1, result.y + 1, result.z) != -1:
+				bitVal |= 787456 #2^10 + 2^18 + 2^19
+			
+			if currentGridmap.get_cell_item(result.x + 1, result.y + 1, result.z) != -1\
+			&& currentGridmap.get_cell_item(result.x + 1, result.y + 1, result.z - 1) != -1\
+			&& currentGridmap.get_cell_item(result.x + 1, result.y, result.z - 1) != -1:
+				bitVal |= 1576960 #2^19 + 2^20 + 2^12
+			
+			if currentGridmap.get_cell_item(result.x + 1, result.y, result.z - 1) != -1\
+			&& currentGridmap.get_cell_item(result.x + 1, result.y - 1, result.z - 1) != -1\
+			&& currentGridmap.get_cell_item(result.x + 1, result.y - 1, result.z) != -1:
+				bitVal |= 4108 #2^12 + 2^3 + 2^2
 		
-		if currentGridmap.get_cell_item(result.x + 1, result.y - 1, result.z) != -1\
-		&& currentGridmap.get_cell_item(result.x + 1, result.y - 1, result.z - 1) != -1\
-		&& currentGridmap.get_cell_item(result.x, result.y - 1, result.z - 1) != -1:
-			bitVal |= 28 #2^2 + 2^3 + 2^4
+		elif scanAxis == 1: #Y scan axis
+			#First ---------------
+			if currentGridmap.get_cell_item(result.x, result.y - 1, result.z + 1) != -1\
+			&& currentGridmap.get_cell_item(result.x + 1, result.y - 1, result.z + 1) != -1\
+			&& currentGridmap.get_cell_item(result.x + 1, result.y - 1, result.z) != -1:
+				bitVal |= 7 #2^0 + 2^1 + 2^2
+			
+			if currentGridmap.get_cell_item(result.x + 1, result.y - 1, result.z) != -1\
+			&& currentGridmap.get_cell_item(result.x + 1, result.y - 1, result.z - 1) != -1\
+			&& currentGridmap.get_cell_item(result.x, result.y - 1, result.z - 1) != -1:
+				bitVal |= 28 #2^2 + 2^3 + 2^4
+			
+			if currentGridmap.get_cell_item(result.x, result.y - 1, result.z - 1) != -1\
+			&& currentGridmap.get_cell_item(result.x - 1, result.y - 1, result.z - 1) != -1\
+			&& currentGridmap.get_cell_item(result.x - 1, result.y - 1, result.z) != -1:
+				bitVal |= 112 #2^4 + 2^5 + 2^6
+			
+			if currentGridmap.get_cell_item(result.x - 1, result.y - 1, result.z) != -1\
+			&& currentGridmap.get_cell_item(result.x - 1, result.y - 1, result.z + 1) != -1\
+			&& currentGridmap.get_cell_item(result.x, result.y - 1, result.z + 1) != -1:
+				bitVal |= 193 #2^6 + 2^7 + 2^0
+			#Second ---------------
+			if currentGridmap.get_cell_item(result.x, result.y, result.z + 1) != -1\
+			&& currentGridmap.get_cell_item(result.x + 1, result.y, result.z + 1) != -1\
+			&& currentGridmap.get_cell_item(result.x + 1, result.y, result.z) != -1:
+				bitVal |= 3584 #2^9 + 2^10 + 2^11
+			
+			if currentGridmap.get_cell_item(result.x + 1, result.y, result.z) != -1\
+			&& currentGridmap.get_cell_item(result.x + 1, result.y, result.z - 1) != -1\
+			&& currentGridmap.get_cell_item(result.x, result.y, result.z - 1) != -1:
+				bitVal |= 14336 #2^11 + 2^12 + 2^13
+			
+			if currentGridmap.get_cell_item(result.x, result.y, result.z - 1) != -1\
+			&& currentGridmap.get_cell_item(result.x - 1, result.y, result.z - 1) != -1\
+			&& currentGridmap.get_cell_item(result.x - 1, result.y, result.z) != -1:
+				bitVal |= 57344 #2^13 + 2^14 + 2^15
+			
+			if currentGridmap.get_cell_item(result.x - 1, result.y, result.z) != -1\
+			&& currentGridmap.get_cell_item(result.x - 1, result.y, result.z + 1) != -1\
+			&& currentGridmap.get_cell_item(result.x, result.y, result.z + 1) != -1:
+				bitVal |= 98816 #2^15 + 2^16 + 2^9
+			#Third ---------------
+			if currentGridmap.get_cell_item(result.x, result.y + 1, result.z + 1) != -1\
+			&& currentGridmap.get_cell_item(result.x + 1, result.y + 1, result.z + 1) != -1\
+			&& currentGridmap.get_cell_item(result.x + 1, result.y + 1, result.z) != -1:
+				bitVal |= 917504 #2^17 + 2^18 + 2^19
+			
+			if currentGridmap.get_cell_item(result.x + 1, result.y + 1, result.z) != -1\
+			&& currentGridmap.get_cell_item(result.x + 1, result.y + 1, result.z - 1) != -1\
+			&& currentGridmap.get_cell_item(result.x, result.y + 1, result.z - 1) != -1:
+				bitVal |= 3670016 #2^19 + 2^20 + 2^21
+			
+			if currentGridmap.get_cell_item(result.x, result.y + 1, result.z - 1) != -1\
+			&& currentGridmap.get_cell_item(result.x - 1, result.y + 1, result.z - 1) != -1\
+			&& currentGridmap.get_cell_item(result.x - 1, result.y + 1, result.z) != -1:
+				bitVal |= 14680064 #2^21 + 2^22 + 2^23
+			
+			if currentGridmap.get_cell_item(result.x - 1, result.y + 1, result.z) != -1\
+			&& currentGridmap.get_cell_item(result.x - 1, result.y + 1, result.z + 1) != -1\
+			&& currentGridmap.get_cell_item(result.x, result.y + 1, result.z + 1) != -1:
+				bitVal |= 25296896 #2^23 + 2^24 + 2^17
 		
-		if currentGridmap.get_cell_item(result.x, result.y - 1, result.z - 1) != -1\
-		&& currentGridmap.get_cell_item(result.x - 1, result.y - 1, result.z - 1) != -1\
-		&& currentGridmap.get_cell_item(result.x - 1, result.y - 1, result.z) != -1:
-			bitVal |= 112 #2^4 + 2^5 + 2^6
-		
-		if currentGridmap.get_cell_item(result.x - 1, result.y - 1, result.z) != -1\
-		&& currentGridmap.get_cell_item(result.x - 1, result.y - 1, result.z + 1) != -1\
-		&& currentGridmap.get_cell_item(result.x, result.y - 1, result.z + 1) != -1:
-			bitVal |= 193 #2^6 + 2^7 + 2^0
-		
-		if currentGridmap.get_cell_item(result.x, result.y, result.z + 1) != -1\
-		&& currentGridmap.get_cell_item(result.x + 1, result.y, result.z + 1) != -1\
-		&& currentGridmap.get_cell_item(result.x + 1, result.y, result.z) != -1:
-			bitVal |= 3584 #2^9 + 2^10 + 2^11
-		
-		if currentGridmap.get_cell_item(result.x + 1, result.y, result.z) != -1\
-		&& currentGridmap.get_cell_item(result.x + 1, result.y, result.z - 1) != -1\
-		&& currentGridmap.get_cell_item(result.x, result.y, result.z - 1) != -1:
-			bitVal |= 14336 #2^11 + 2^12 + 2^13
-		
-		if currentGridmap.get_cell_item(result.x, result.y, result.z - 1) != -1\
-		&& currentGridmap.get_cell_item(result.x - 1, result.y, result.z - 1) != -1\
-		&& currentGridmap.get_cell_item(result.x - 1, result.y, result.z) != -1:
-			bitVal |= 57344 #2^13 + 2^14 + 2^15
-		
-		if currentGridmap.get_cell_item(result.x - 1, result.y, result.z) != -1\
-		&& currentGridmap.get_cell_item(result.x - 1, result.y, result.z + 1) != -1\
-		&& currentGridmap.get_cell_item(result.x, result.y, result.z + 1) != -1:
-			bitVal |= 98816 #2^15 + 2^16 + 2^9
-		
-		if currentGridmap.get_cell_item(result.x, result.y + 1, result.z + 1) != -1\
-		&& currentGridmap.get_cell_item(result.x + 1, result.y + 1, result.z + 1) != -1\
-		&& currentGridmap.get_cell_item(result.x + 1, result.y + 1, result.z) != -1:
-			bitVal |= 917504 #2^17 + 2^18 + 2^19
-		
-		if currentGridmap.get_cell_item(result.x + 1, result.y + 1, result.z) != -1\
-		&& currentGridmap.get_cell_item(result.x + 1, result.y + 1, result.z - 1) != -1\
-		&& currentGridmap.get_cell_item(result.x, result.y + 1, result.z - 1) != -1:
-			bitVal |= 3670016 #2^19 + 2^20 + 2^21
-		
-		if currentGridmap.get_cell_item(result.x, result.y + 1, result.z - 1) != -1\
-		&& currentGridmap.get_cell_item(result.x - 1, result.y + 1, result.z - 1) != -1\
-		&& currentGridmap.get_cell_item(result.x - 1, result.y + 1, result.z) != -1:
-			bitVal |= 14680064 #2^21 + 2^22 + 2^23
-		
-		if currentGridmap.get_cell_item(result.x - 1, result.y + 1, result.z) != -1\
-		&& currentGridmap.get_cell_item(result.x - 1, result.y + 1, result.z + 1) != -1\
-		&& currentGridmap.get_cell_item(result.x, result.y + 1, result.z + 1) != -1:
-			bitVal |= 25296896 #2^23 + 2^24 + 2^17
+		elif scanAxis == 2: #Z scan axis
+			#First ---------------
+			if currentGridmap.get_cell_item(result.x, result.y - 1, result.z - 1) != -1\
+			&& currentGridmap.get_cell_item(result.x - 1, result.y - 1, result.z - 1) != -1\
+			&& currentGridmap.get_cell_item(result.x - 1, result.y, result.z - 1) != -1:
+				bitVal |= 16432 #2^4 + 2^5 + 2^14
+			
+			if currentGridmap.get_cell_item(result.x - 1, result.y, result.z - 1) != -1\
+			&& currentGridmap.get_cell_item(result.x - 1, result.y + 1, result.z - 1) != -1\
+			&& currentGridmap.get_cell_item(result.x, result.y + 1, result.z - 1) != -1:
+				bitVal |= 6307840 #2^14 + 2^22 + 2^21
+			
+			if currentGridmap.get_cell_item(result.x, result.y + 1, result.z - 1) != -1\
+			&& currentGridmap.get_cell_item(result.x + 1, result.y + 1, result.z - 1) != -1\
+			&& currentGridmap.get_cell_item(result.x + 1, result.y, result.z - 1) != -1:
+				bitVal |= 3149824 #2^21 + 2^20 + 2^12
+			
+			if currentGridmap.get_cell_item(result.x + 1, result.y, result.z - 1) != -1\
+			&& currentGridmap.get_cell_item(result.x + 1, result.y - 1, result.z - 1) != -1\
+			&& currentGridmap.get_cell_item(result.x, result.y - 1, result.z - 1) != -1:
+				bitVal |= 4120 #2^12 + 2^3 + 2^4
+			#Second ---------------
+			if currentGridmap.get_cell_item(result.x, result.y - 1, result.z) != -1\
+			&& currentGridmap.get_cell_item(result.x - 1, result.y - 1, result.z) != -1\
+			&& currentGridmap.get_cell_item(result.x - 1, result.y, result.z) != -1:
+				bitVal |= 33088 #2^8 + 2^6 + 2^15
+			
+			if currentGridmap.get_cell_item(result.x - 1, result.y, result.z) != -1\
+			&& currentGridmap.get_cell_item(result.x - 1, result.y + 1, result.z) != -1\
+			&& currentGridmap.get_cell_item(result.x, result.y + 1, result.z) != -1:
+				bitVal |= 41975808 #2^15 + 2^23 + 2^25
+			
+			if currentGridmap.get_cell_item(result.x, result.y + 1, result.z) != -1\
+			&& currentGridmap.get_cell_item(result.x + 1, result.y + 1, result.z) != -1\
+			&& currentGridmap.get_cell_item(result.x + 1, result.y, result.z) != -1:
+				bitVal |= 34080768 #2^25 + 2^19 + 2^11
+			
+			if currentGridmap.get_cell_item(result.x + 1, result.y, result.z) != -1\
+			&& currentGridmap.get_cell_item(result.x + 1, result.y - 1, result.z) != -1\
+			&& currentGridmap.get_cell_item(result.x, result.y - 1, result.z) != -1:
+				bitVal |= 2308 #2^11 + 2^2 + 2^8
+			#Third ---------------
+			if currentGridmap.get_cell_item(result.x, result.y - 1, result.z + 1) != -1\
+			&& currentGridmap.get_cell_item(result.x - 1, result.y - 1, result.z + 1) != -1\
+			&& currentGridmap.get_cell_item(result.x - 1, result.y, result.z + 1) != -1:
+				bitVal |= 65665 #2^0 + 2^7 + 2^16
+			
+			if currentGridmap.get_cell_item(result.x - 1, result.y, result.z + 1) != -1\
+			&& currentGridmap.get_cell_item(result.x - 1, result.y + 1, result.z + 1) != -1\
+			&& currentGridmap.get_cell_item(result.x, result.y + 1, result.z + 1) != -1:
+				bitVal |= 16973824 #2^16 + 2^24 + 2^17
+			
+			if currentGridmap.get_cell_item(result.x, result.y + 1, result.z + 1) != -1\
+			&& currentGridmap.get_cell_item(result.x + 1, result.y + 1, result.z + 1) != -1\
+			&& currentGridmap.get_cell_item(result.x + 1, result.y, result.z + 1) != -1:
+				bitVal |= 394240 #2^17 + 2^18 + 2^10
+			
+			if currentGridmap.get_cell_item(result.x + 1, result.y, result.z + 1) != -1\
+			&& currentGridmap.get_cell_item(result.x + 1, result.y - 1, result.z + 1) != -1\
+			&& currentGridmap.get_cell_item(result.x, result.y - 1, result.z + 1) != -1:
+				bitVal |= 1027 #2^10 + 2^1 + 2^0
 	
 	bitVal &= AUTO_AXIS[autoAxis]
 	
