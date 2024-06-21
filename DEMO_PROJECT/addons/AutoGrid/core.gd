@@ -80,15 +80,15 @@ func load_autotile_info():
 		print("--- AUTOGRID WARNING --- .agrid file couldn't find for this GridMap node. Please create autotile or disable autotile from AutoGrid window")
 		return
 	
-	load_autotile_info_from(fileDir)
-	print("--- AUTOGRID INFO --- AutoGrid is ready to use!")
+	if load_autotile_info_from(fileDir):
+		print("--- AUTOGRID INFO --- AutoGrid is ready to use!")
 
-func load_autotile_info_from(fileDir : String, changeNameToId : bool = true):
+func load_autotile_info_from(fileDir : String, changeNameToId : bool = true) -> bool:
 	var loadFile = File.new()
 	if loadFile.open(fileDir, File.READ) != OK:
 		print("--- AUTOGRID ERROR --- File couldn't find at ", fileDir)
 		loadFile.close()
-		return
+		return false
 	var content = loadFile.get_as_text()
 	loadFile.close()
 	autotileDictionary = JSON.parse(content).result
@@ -105,6 +105,8 @@ func load_autotile_info_from(fileDir : String, changeNameToId : bool = true):
 			emptyTileId = autotileDictionary[keys[0]]
 		else:
 			emptyTileId = autotileDictionary[keys[1]]
+	
+	return true
 
 func editmode_changed(val):
 	editMode = val

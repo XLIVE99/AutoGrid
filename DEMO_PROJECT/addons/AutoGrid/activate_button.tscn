@@ -18,7 +18,7 @@ rect_min_size = Vector2( 85, 24 )
 text = "AutoGrid"
 icon = ExtResource( 1 )
 expand_icon = true
-items = [ "Create Bitmask", null, 0, false, false, 0, 33554516, null, "", false, "Remove Bitmask", null, 0, false, false, 1, 33554513, null, "", false, "Increase Bitmask", null, 0, false, false, 2, 33554481, null, "", false, "Decrease Bitmask", null, 0, false, false, 3, 33554482, null, "", false, "", null, 0, false, false, 4, 0, null, "", true, "3D", null, 0, false, false, 5, 0, null, "", false, "Only X", null, 0, false, false, 6, 0, null, "", false, "Only Y", null, 0, false, false, 7, 0, null, "", false, "Only Z", null, 0, false, false, 8, 0, null, "", false, "", null, 0, false, false, 9, 0, null, "", true, "Set Icon", null, 0, false, false, 10, 0, null, "", false ]
+items = [ "Create Bitmask", null, 0, false, false, 0, 33554516, null, "", false, "Remove Bitmask", null, 0, false, false, 1, 33554513, null, "", false, "Expand Bitmask", null, 0, false, false, 2, 33554481, null, "", false, "Shrink Bitmask", null, 0, false, false, 3, 33554482, null, "", false, "", null, 0, false, false, 4, 0, null, "", true, "All Axises", null, 0, false, false, 5, 0, null, "", false, "Y & Z Axises", null, 0, false, false, 6, 0, null, "", false, "X & Z Axises", null, 0, false, false, 7, 0, null, "", false, "X & Y Axises", null, 0, false, false, 8, 0, null, "", false, "", null, 0, false, false, 9, 0, null, "", true, "Set Icon", null, 0, false, false, 10, 0, null, "", false ]
 switch_on_hover = true
 __meta__ = {
 "_edit_use_anchors_": false

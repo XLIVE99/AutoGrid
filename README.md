@@ -16,14 +16,14 @@ All AutoGrid settings are in the AutoGrid dock panel which is in same tab as the
 3. You will see a button named "AutoGrid" on top of the scene panel.
    - Create Bitmask: Creates a bitmask for the selected MeshInstance.
    - Remove Bitmask: Deletes the bitmask of the selected MeshInstance.
-   - Increase Bitmask: Increases visual size of the bitmasks.
-   - Decrease Bitmask: Decreases visual size of the bitmasks.
-   - 3D: Shows the full bitmask.
-   - Only X: Shows the only x axis of the bitmask (Global X).
-   - Only Y: Shows the only y axis of the bitmask (Global Y).
-   - Only Z: Shows the only z axis of the bitmask (Global Z).
+   - Expand Bitmask: Expands the bitmasks.
+   - Shrink Bitmask: Shrinks the bitmasks.
+   - All Axises: Shows the full bitmask.
+   - Y & Z Axises: Shows Y & Z axises of the bitmask (Global X).
+   - X & Z Axises: Shows X & Z axises of the bitmask (Global Y).
+   - X & Y Axises: Shows X & Y axises of the bitmask (Global Z).
    - Set Icon: Sets the icon for the AutoGrid tile to be created (Default is the first child of the scene, selected icon will be shown as blue transparent sphere).
-4. After creating the bitmask you can simply paint it by clicking on white cubes, painted cubes will become red. Click on the cube again for disabling it.<br>
+4. After creating the bitmask you can simply paint it by clicking on white cubes, painted cubes will become red. Click on the cube again to disable it.<br>
 ![](images/Bitmask.png)
 ### **Creating autotile info**
 After setting all the bitmasks. Click to "Create Autotile Info" button located in the AutoGrid panel. Then create MeshLibrary again and you are ready to go! The autotile system will work now.<br>
@@ -36,8 +36,15 @@ After setting all the bitmasks. Click to "Create Autotile Info" button located i
 - Autotile Mode:
   - Full 3x3: Checks every corner for fit the perfect tile for that place (Same as tilemap).
   - Minimal 3x3: Checks the corners three by three (Same as tilemap).
-- Autotile Axis: Limits the autotile check axis.
-- Autotile Scan Axis: Scans surrounding to apply autotile (If you are working on 3D environment then leave this as "Y axis". If you are working on 2D environment then select which axis is facing the tiles)
+- Autotile Axis: Limits the autotile check axis. Useful when gridmap uses multiple floors
+  - All: Checks all directions to fit the tile.
+  - Y & Z Axises: Checks only Y & Z Axises (up-down, forward-back).
+  - X & Z Axises: Checks only X & Z axises (right-left, forward-back). Useful for top-down games.
+  - X & Y Axises: Checks only X & Y axises (right-left, up-down). Same as 2D tilemap, useful for side-scroller games.
+- Tile Normal Axis: Select the tile's facing direction. Changes autotile scan orientation.
+  - X Axis: Tile's facing direction is global X axis.
+  - Y Axis: Tile's facing direction is global Y axis. Useful for ground tiles.
+  - Z Axis: Tile's facing direction is global Z axis. Useful for wall (or background) tiles.
 - Edit Mode: Enables the bitmap edit button.
 - Performance Mode: If enabled only checks for new tiles, do not check for repainted tiles (If map is too big, enabling this might increase the performance).
 - Reload Autotile Info: Reloads the bitmasks value. (Will shown if Edit mode is enabled)
@@ -56,3 +63,4 @@ You can open the "Demo_Scene.tscn" and start painting. **For better visual you c
 - Re-open the Godot Engine will set all the bitmasks as active (If no need to edit the bitmasks then you can ignore this). However, reloading the autotile info (if any available) will solve this.
 - Since the GridMap node doesn't have a last edited cell variable, performance cost will increase with the cell count.
 - Gridmap's selection operations don't work with the AutoGrid.
+- AutoGrid uses global axis. Therefore rotated tiles doesn't change anything.
