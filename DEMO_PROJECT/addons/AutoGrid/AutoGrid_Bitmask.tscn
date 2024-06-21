@@ -1,524 +1,518 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=33 format=3 uid="uid://d0erc1sce6n6o"]
 
-[ext_resource path="res://addons/AutoGrid/bitmask_box.gd" type="Script" id=1]
-[ext_resource path="res://addons/AutoGrid/bitmask_holder.gd" type="Script" id=2]
+[ext_resource type="Script" path="res://addons/AutoGrid/bitmask_box.gd" id="1"]
+[ext_resource type="Script" path="res://addons/AutoGrid/bitmask_holder.gd" id="2"]
 
-[sub_resource type="SphereMesh" id=1]
-radius = 0.5
-height = 1.0
+[sub_resource type="SphereMesh" id="1"]
 radial_segments = 8
 rings = 4
 
-[sub_resource type="SpatialMaterial" id=2]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jpig2"]
 resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
+shading_mode = 2
+albedo_color = Color(1, 1, 1, 0.15)
 
-[sub_resource type="CubeMesh" id=3]
-size = Vector3( 1, 1, 1 )
+[sub_resource type="BoxMesh" id="3"]
 
-[sub_resource type="SpatialMaterial" id=4]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_225ob"]
 resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 1, 1, 1, 0.15 )
+shading_mode = 2
 
-[sub_resource type="BoxShape" id=5]
-extents = Vector3( 0.5, 0.5, 0.5 )
+[sub_resource type="BoxShape3D" id="5"]
 
-[sub_resource type="SpatialMaterial" id=6]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2qoel"]
 resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 1, 1, 1, 0.14902 )
+shading_mode = 2
 
-[sub_resource type="SpatialMaterial" id=7]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8efax"]
 resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 1, 1, 1, 0.14902 )
+shading_mode = 2
 
-[sub_resource type="SpatialMaterial" id=8]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_boag3"]
 resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 1, 1, 1, 0.14902 )
+shading_mode = 2
 
-[sub_resource type="SpatialMaterial" id=9]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qo66m"]
 resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 1, 1, 1, 0.14902 )
+shading_mode = 2
 
-[sub_resource type="SpatialMaterial" id=10]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lyviu"]
 resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 1, 1, 1, 0.14902 )
+shading_mode = 2
 
-[sub_resource type="SpatialMaterial" id=11]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ql3ty"]
 resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 1, 1, 1, 0.14902 )
+shading_mode = 2
 
-[sub_resource type="SpatialMaterial" id=12]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hxk7v"]
 resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 1, 1, 1, 0.14902 )
+shading_mode = 2
 
-[sub_resource type="SpatialMaterial" id=13]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w2x66"]
 resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 1, 1, 1, 0.14902 )
+shading_mode = 2
 
-[sub_resource type="SpatialMaterial" id=14]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8blph"]
 resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 1, 1, 1, 0.14902 )
+shading_mode = 2
 
-[sub_resource type="SpatialMaterial" id=15]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ocxpg"]
 resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 1, 1, 1, 0.14902 )
+shading_mode = 2
 
-[sub_resource type="SpatialMaterial" id=16]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wwauw"]
 resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 1, 1, 1, 0.14902 )
+shading_mode = 2
 
-[sub_resource type="SpatialMaterial" id=17]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_51e78"]
 resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 1, 1, 1, 0.14902 )
+shading_mode = 2
 
-[sub_resource type="SpatialMaterial" id=18]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fu7uu"]
 resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 1, 1, 1, 0.14902 )
+shading_mode = 2
 
-[sub_resource type="SpatialMaterial" id=19]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nexgq"]
 resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 1, 1, 1, 0.14902 )
+shading_mode = 2
 
-[sub_resource type="SpatialMaterial" id=20]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bf27i"]
 resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 1, 1, 1, 0.14902 )
+shading_mode = 2
 
-[sub_resource type="SpatialMaterial" id=21]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uxed1"]
 resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 1, 1, 1, 0.14902 )
+shading_mode = 2
 
-[sub_resource type="SpatialMaterial" id=22]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7qylf"]
 resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 1, 1, 1, 0.14902 )
+shading_mode = 2
 
-[sub_resource type="SpatialMaterial" id=23]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gybrf"]
 resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 1, 1, 1, 0.14902 )
+shading_mode = 2
 
-[sub_resource type="SpatialMaterial" id=24]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kxp5s"]
 resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 1, 1, 1, 0.14902 )
+shading_mode = 2
 
-[sub_resource type="SpatialMaterial" id=25]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tn16y"]
 resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 1, 1, 1, 0.14902 )
+shading_mode = 2
 
-[sub_resource type="SpatialMaterial" id=26]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cgmxe"]
 resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 1, 1, 1, 0.14902 )
+shading_mode = 2
 
-[sub_resource type="SpatialMaterial" id=27]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bjv4n"]
 resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 1, 1, 1, 0.14902 )
+shading_mode = 2
 
-[sub_resource type="SpatialMaterial" id=28]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cyimf"]
 resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 1, 1, 1, 0.14902 )
+shading_mode = 2
 
-[sub_resource type="SpatialMaterial" id=29]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wjb5n"]
 resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 1, 1, 1, 0.14902 )
+shading_mode = 2
 
-[sub_resource type="SpatialMaterial" id=30]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hhwok"]
 resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 1, 1, 1, 0.14902 )
+shading_mode = 2
 
-[node name="AutoGrid_Bitmask" type="MeshInstance"]
-mesh = SubResource( 1 )
-material/0 = SubResource( 2 )
-script = ExtResource( 2 )
+[node name="AutoGrid_Bitmask" type="MeshInstance3D"]
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("1")
+surface_material_override/0 = SubResource("StandardMaterial3D_jpig2")
+script = ExtResource("2")
 
-[node name="Bitmask_Box" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 2 )
+[node name="Bitmask_Box" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 2)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="MeshInstance" type="MeshInstance" parent="Bitmask_Box"]
-mesh = SubResource( 3 )
-material/0 = SubResource( 4 )
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bitmask_Box"]
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("3")
+surface_material_override/0 = SubResource("StandardMaterial3D_225ob")
 
-[node name="CollisionShape" type="CollisionShape" parent="Bitmask_Box"]
-shape = SubResource( 5 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box"]
+shape = SubResource("5")
 
-[node name="Bitmask_Box2" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -2, 2 )
+[node name="Bitmask_Box2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -2, 2)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="MeshInstance" type="MeshInstance" parent="Bitmask_Box2"]
-mesh = SubResource( 3 )
-material/0 = SubResource( 6 )
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bitmask_Box2"]
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("3")
+surface_material_override/0 = SubResource("StandardMaterial3D_2qoel")
 
-[node name="CollisionShape" type="CollisionShape" parent="Bitmask_Box2"]
-shape = SubResource( 5 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box2"]
+shape = SubResource("5")
 
-[node name="Bitmask_Box3" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -2, 0 )
+[node name="Bitmask_Box3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -2, 0)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="MeshInstance" type="MeshInstance" parent="Bitmask_Box3"]
-mesh = SubResource( 3 )
-material/0 = SubResource( 7 )
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bitmask_Box3"]
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("3")
+surface_material_override/0 = SubResource("StandardMaterial3D_8efax")
 
-[node name="CollisionShape" type="CollisionShape" parent="Bitmask_Box3"]
-shape = SubResource( 5 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box3"]
+shape = SubResource("5")
 
-[node name="Bitmask_Box4" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -2, -2 )
+[node name="Bitmask_Box4" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -2, -2)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="MeshInstance" type="MeshInstance" parent="Bitmask_Box4"]
-mesh = SubResource( 3 )
-material/0 = SubResource( 8 )
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bitmask_Box4"]
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("3")
+surface_material_override/0 = SubResource("StandardMaterial3D_boag3")
 
-[node name="CollisionShape" type="CollisionShape" parent="Bitmask_Box4"]
-shape = SubResource( 5 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box4"]
+shape = SubResource("5")
 
-[node name="Bitmask_Box5" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -2 )
+[node name="Bitmask_Box5" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -2)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="MeshInstance" type="MeshInstance" parent="Bitmask_Box5"]
-mesh = SubResource( 3 )
-material/0 = SubResource( 9 )
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bitmask_Box5"]
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("3")
+surface_material_override/0 = SubResource("StandardMaterial3D_qo66m")
 
-[node name="CollisionShape" type="CollisionShape" parent="Bitmask_Box5"]
-shape = SubResource( 5 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box5"]
+shape = SubResource("5")
 
-[node name="Bitmask_Box6" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -2, -2 )
+[node name="Bitmask_Box6" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -2, -2)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="MeshInstance" type="MeshInstance" parent="Bitmask_Box6"]
-mesh = SubResource( 3 )
-material/0 = SubResource( 10 )
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bitmask_Box6"]
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("3")
+surface_material_override/0 = SubResource("StandardMaterial3D_lyviu")
 
-[node name="CollisionShape" type="CollisionShape" parent="Bitmask_Box6"]
-shape = SubResource( 5 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box6"]
+shape = SubResource("5")
 
-[node name="Bitmask_Box7" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -2, 0 )
+[node name="Bitmask_Box7" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -2, 0)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="MeshInstance" type="MeshInstance" parent="Bitmask_Box7"]
-mesh = SubResource( 3 )
-material/0 = SubResource( 11 )
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bitmask_Box7"]
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("3")
+surface_material_override/0 = SubResource("StandardMaterial3D_ql3ty")
 
-[node name="CollisionShape" type="CollisionShape" parent="Bitmask_Box7"]
-shape = SubResource( 5 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box7"]
+shape = SubResource("5")
 
-[node name="Bitmask_Box8" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -2, 2 )
+[node name="Bitmask_Box8" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -2, 2)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="MeshInstance" type="MeshInstance" parent="Bitmask_Box8"]
-mesh = SubResource( 3 )
-material/0 = SubResource( 12 )
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bitmask_Box8"]
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("3")
+surface_material_override/0 = SubResource("StandardMaterial3D_hxk7v")
 
-[node name="CollisionShape" type="CollisionShape" parent="Bitmask_Box8"]
-shape = SubResource( 5 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box8"]
+shape = SubResource("5")
 
-[node name="Bitmask_Box9" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
+[node name="Bitmask_Box9" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="MeshInstance" type="MeshInstance" parent="Bitmask_Box9"]
-mesh = SubResource( 3 )
-material/0 = SubResource( 13 )
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bitmask_Box9"]
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("3")
+surface_material_override/0 = SubResource("StandardMaterial3D_w2x66")
 
-[node name="CollisionShape" type="CollisionShape" parent="Bitmask_Box9"]
-shape = SubResource( 5 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box9"]
+shape = SubResource("5")
 
-[node name="Bitmask_Box10" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+[node name="Bitmask_Box10" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="MeshInstance" type="MeshInstance" parent="Bitmask_Box10"]
-mesh = SubResource( 3 )
-material/0 = SubResource( 14 )
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bitmask_Box10"]
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("3")
+surface_material_override/0 = SubResource("StandardMaterial3D_8blph")
 
-[node name="CollisionShape" type="CollisionShape" parent="Bitmask_Box10"]
-shape = SubResource( 5 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box10"]
+shape = SubResource("5")
 
-[node name="Bitmask_Box11" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2 )
+[node name="Bitmask_Box11" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="MeshInstance" type="MeshInstance" parent="Bitmask_Box11"]
-mesh = SubResource( 3 )
-material/0 = SubResource( 15 )
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bitmask_Box11"]
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("3")
+surface_material_override/0 = SubResource("StandardMaterial3D_ocxpg")
 
-[node name="CollisionShape" type="CollisionShape" parent="Bitmask_Box11"]
-shape = SubResource( 5 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box11"]
+shape = SubResource("5")
 
-[node name="Bitmask_Box12" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0 )
+[node name="Bitmask_Box12" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="MeshInstance" type="MeshInstance" parent="Bitmask_Box12"]
-mesh = SubResource( 3 )
-material/0 = SubResource( 16 )
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bitmask_Box12"]
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("3")
+surface_material_override/0 = SubResource("StandardMaterial3D_wwauw")
 
-[node name="CollisionShape" type="CollisionShape" parent="Bitmask_Box12"]
-shape = SubResource( 5 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box12"]
+shape = SubResource("5")
 
-[node name="Bitmask_Box13" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2 )
+[node name="Bitmask_Box13" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="MeshInstance" type="MeshInstance" parent="Bitmask_Box13"]
-mesh = SubResource( 3 )
-material/0 = SubResource( 17 )
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bitmask_Box13"]
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("3")
+surface_material_override/0 = SubResource("StandardMaterial3D_51e78")
 
-[node name="CollisionShape" type="CollisionShape" parent="Bitmask_Box13"]
-shape = SubResource( 5 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box13"]
+shape = SubResource("5")
 
-[node name="Bitmask_Box14" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+[node name="Bitmask_Box14" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="MeshInstance" type="MeshInstance" parent="Bitmask_Box14"]
-mesh = SubResource( 3 )
-material/0 = SubResource( 18 )
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bitmask_Box14"]
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("3")
+surface_material_override/0 = SubResource("StandardMaterial3D_fu7uu")
 
-[node name="CollisionShape" type="CollisionShape" parent="Bitmask_Box14"]
-shape = SubResource( 5 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box14"]
+shape = SubResource("5")
 
-[node name="Bitmask_Box15" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2 )
+[node name="Bitmask_Box15" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="MeshInstance" type="MeshInstance" parent="Bitmask_Box15"]
-mesh = SubResource( 3 )
-material/0 = SubResource( 19 )
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bitmask_Box15"]
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("3")
+surface_material_override/0 = SubResource("StandardMaterial3D_nexgq")
 
-[node name="CollisionShape" type="CollisionShape" parent="Bitmask_Box15"]
-shape = SubResource( 5 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box15"]
+shape = SubResource("5")
 
-[node name="Bitmask_Box16" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0 )
+[node name="Bitmask_Box16" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="MeshInstance" type="MeshInstance" parent="Bitmask_Box16"]
-mesh = SubResource( 3 )
-material/0 = SubResource( 20 )
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bitmask_Box16"]
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("3")
+surface_material_override/0 = SubResource("StandardMaterial3D_bf27i")
 
-[node name="CollisionShape" type="CollisionShape" parent="Bitmask_Box16"]
-shape = SubResource( 5 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box16"]
+shape = SubResource("5")
 
-[node name="Bitmask_Box17" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2 )
+[node name="Bitmask_Box17" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="MeshInstance" type="MeshInstance" parent="Bitmask_Box17"]
-mesh = SubResource( 3 )
-material/0 = SubResource( 21 )
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bitmask_Box17"]
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("3")
+surface_material_override/0 = SubResource("StandardMaterial3D_uxed1")
 
-[node name="CollisionShape" type="CollisionShape" parent="Bitmask_Box17"]
-shape = SubResource( 5 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box17"]
+shape = SubResource("5")
 
-[node name="Bitmask_Box18" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2 )
+[node name="Bitmask_Box18" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="MeshInstance" type="MeshInstance" parent="Bitmask_Box18"]
-mesh = SubResource( 3 )
-material/0 = SubResource( 22 )
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bitmask_Box18"]
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("3")
+surface_material_override/0 = SubResource("StandardMaterial3D_7qylf")
 
-[node name="CollisionShape" type="CollisionShape" parent="Bitmask_Box18"]
-shape = SubResource( 5 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box18"]
+shape = SubResource("5")
 
-[node name="Bitmask_Box19" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 2 )
+[node name="Bitmask_Box19" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 2)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="MeshInstance" type="MeshInstance" parent="Bitmask_Box19"]
-mesh = SubResource( 3 )
-material/0 = SubResource( 23 )
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bitmask_Box19"]
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("3")
+surface_material_override/0 = SubResource("StandardMaterial3D_gybrf")
 
-[node name="CollisionShape" type="CollisionShape" parent="Bitmask_Box19"]
-shape = SubResource( 5 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box19"]
+shape = SubResource("5")
 
-[node name="Bitmask_Box20" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 0 )
+[node name="Bitmask_Box20" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 0)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="MeshInstance" type="MeshInstance" parent="Bitmask_Box20"]
-mesh = SubResource( 3 )
-material/0 = SubResource( 24 )
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bitmask_Box20"]
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("3")
+surface_material_override/0 = SubResource("StandardMaterial3D_kxp5s")
 
-[node name="CollisionShape" type="CollisionShape" parent="Bitmask_Box20"]
-shape = SubResource( 5 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box20"]
+shape = SubResource("5")
 
-[node name="Bitmask_Box21" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -2 )
+[node name="Bitmask_Box21" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -2)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="MeshInstance" type="MeshInstance" parent="Bitmask_Box21"]
-mesh = SubResource( 3 )
-material/0 = SubResource( 25 )
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bitmask_Box21"]
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("3")
+surface_material_override/0 = SubResource("StandardMaterial3D_tn16y")
 
-[node name="CollisionShape" type="CollisionShape" parent="Bitmask_Box21"]
-shape = SubResource( 5 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box21"]
+shape = SubResource("5")
 
-[node name="Bitmask_Box22" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2 )
+[node name="Bitmask_Box22" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="MeshInstance" type="MeshInstance" parent="Bitmask_Box22"]
-mesh = SubResource( 3 )
-material/0 = SubResource( 26 )
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bitmask_Box22"]
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("3")
+surface_material_override/0 = SubResource("StandardMaterial3D_cgmxe")
 
-[node name="CollisionShape" type="CollisionShape" parent="Bitmask_Box22"]
-shape = SubResource( 5 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box22"]
+shape = SubResource("5")
 
-[node name="Bitmask_Box23" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -2 )
+[node name="Bitmask_Box23" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -2)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="MeshInstance" type="MeshInstance" parent="Bitmask_Box23"]
-mesh = SubResource( 3 )
-material/0 = SubResource( 27 )
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bitmask_Box23"]
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("3")
+surface_material_override/0 = SubResource("StandardMaterial3D_bjv4n")
 
-[node name="CollisionShape" type="CollisionShape" parent="Bitmask_Box23"]
-shape = SubResource( 5 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box23"]
+shape = SubResource("5")
 
-[node name="Bitmask_Box24" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, 0 )
+[node name="Bitmask_Box24" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, 0)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="MeshInstance" type="MeshInstance" parent="Bitmask_Box24"]
-mesh = SubResource( 3 )
-material/0 = SubResource( 28 )
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bitmask_Box24"]
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("3")
+surface_material_override/0 = SubResource("StandardMaterial3D_cyimf")
 
-[node name="CollisionShape" type="CollisionShape" parent="Bitmask_Box24"]
-shape = SubResource( 5 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box24"]
+shape = SubResource("5")
 
-[node name="Bitmask_Box25" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, 2 )
+[node name="Bitmask_Box25" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, 2)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="MeshInstance" type="MeshInstance" parent="Bitmask_Box25"]
-mesh = SubResource( 3 )
-material/0 = SubResource( 29 )
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bitmask_Box25"]
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("3")
+surface_material_override/0 = SubResource("StandardMaterial3D_wjb5n")
 
-[node name="CollisionShape" type="CollisionShape" parent="Bitmask_Box25"]
-shape = SubResource( 5 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box25"]
+shape = SubResource("5")
 
-[node name="Bitmask_Box26" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+[node name="Bitmask_Box26" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="MeshInstance" type="MeshInstance" parent="Bitmask_Box26"]
-mesh = SubResource( 3 )
-material/0 = SubResource( 30 )
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bitmask_Box26"]
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("3")
+surface_material_override/0 = SubResource("StandardMaterial3D_hhwok")
 
-[node name="CollisionShape" type="CollisionShape" parent="Bitmask_Box26"]
-shape = SubResource( 5 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box26"]
+shape = SubResource("5")

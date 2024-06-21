@@ -1,1723 +1,739 @@
-[gd_scene load_steps=106 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://ch68knt8r5mqi"]
 
-[ext_resource path="res://DEMO/res_2D/dungeon_tiles_ground.png" type="Texture" id=1]
-[ext_resource path="res://addons/AutoGrid/AutoGrid_Bitmask.tscn" type="PackedScene" id=3]
+[ext_resource type="PackedScene" uid="uid://d0erc1sce6n6o" path="res://addons/AutoGrid/AutoGrid_Bitmask.tscn" id="3"]
 
-[sub_resource type="QuadMesh" id=1]
-resource_name = "res://DEMO/res/Ground.agrid"
-size = Vector2( 2, 2 )
+[sub_resource type="QuadMesh" id="1"]
+resource_name = "res://DEMO/res_2D/Ground.agrid"
+size = Vector2(2, 2)
 
-[sub_resource type="SpatialMaterial" id=2]
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
+[sub_resource type="BoxShape3D" id="3"]
+size = Vector3(2, 2, 0.2)
 
-[sub_resource type="BoxShape" id=3]
-extents = Vector3( 1, 1, 0.1 )
-
-[sub_resource type="SphereMesh" id=4]
-radius = 0.5
-height = 1.0
+[sub_resource type="SphereMesh" id="4"]
 radial_segments = 8
 rings = 4
 
-[sub_resource type="SpatialMaterial" id=5]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=6]
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.125, 0, 0 )
-
-[sub_resource type="SpatialMaterial" id=7]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=8]
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.25, 0, 0 )
-
-[sub_resource type="SpatialMaterial" id=9]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=10]
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0, 0.125, 0 )
-
-[sub_resource type="SpatialMaterial" id=11]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=12]
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.125, 0.125, 0 )
-
-[sub_resource type="SpatialMaterial" id=13]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=14]
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.25, 0.125, 0 )
-
-[sub_resource type="SpatialMaterial" id=15]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=16]
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0, 0.25, 0 )
-
-[sub_resource type="SpatialMaterial" id=17]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=18]
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.125, 0.25, 0 )
-
-[sub_resource type="SpatialMaterial" id=19]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=20]
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.25, 0.25, 0 )
-
-[sub_resource type="SpatialMaterial" id=21]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=22]
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.375, 0, 0 )
-
-[sub_resource type="SpatialMaterial" id=23]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=24]
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.375, 0.125, 0 )
-
-[sub_resource type="SpatialMaterial" id=25]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=26]
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.375, 0.25, 0 )
-
-[sub_resource type="SpatialMaterial" id=27]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=28]
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0, 0.375, 0 )
-
-[sub_resource type="SpatialMaterial" id=29]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=30]
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.125, 0.375, 0 )
-
-[sub_resource type="SpatialMaterial" id=31]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=32]
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.25, 0.375, 0 )
-
-[sub_resource type="SpatialMaterial" id=33]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=34]
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.375, 0.375, 0 )
-
-[sub_resource type="SpatialMaterial" id=35]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0.7 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=36]
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.5, 0, 0 )
-
-[sub_resource type="SpatialMaterial" id=37]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=38]
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.625, 0, 0 )
-
-[sub_resource type="SpatialMaterial" id=39]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=40]
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.75, 0, 0 )
-
-[sub_resource type="SpatialMaterial" id=41]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=42]
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.875, 0, 0 )
-
-[sub_resource type="SpatialMaterial" id=43]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=44]
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.5, 0.125, 0 )
-
-[sub_resource type="SpatialMaterial" id=45]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=46]
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.625, 0.125, 0 )
-
-[sub_resource type="SpatialMaterial" id=47]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=48]
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.75, 0.125, 0 )
-
-[sub_resource type="SpatialMaterial" id=49]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=50]
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.875, 0.125, 0 )
-
-[sub_resource type="SpatialMaterial" id=51]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=52]
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.5, 0.25, 0 )
-
-[sub_resource type="SpatialMaterial" id=53]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=54]
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.625, 0.25, 0 )
-
-[sub_resource type="SpatialMaterial" id=55]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=56]
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.75, 0.25, 0 )
-
-[sub_resource type="SpatialMaterial" id=57]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=58]
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.875, 0.25, 0 )
-
-[sub_resource type="SpatialMaterial" id=59]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=60]
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.5, 0.375, 0 )
-
-[sub_resource type="SpatialMaterial" id=61]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=62]
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.625, 0.375, 0 )
-
-[sub_resource type="SpatialMaterial" id=63]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=64]
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.75, 0.375, 0 )
-
-[sub_resource type="SpatialMaterial" id=65]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=66]
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.875, 0.375, 0 )
-
-[sub_resource type="SpatialMaterial" id=67]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=68]
-render_priority = 1
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0, 0.5, 0 )
-
-[sub_resource type="SpatialMaterial" id=69]
-render_priority = 1
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0, 0.625, 0 )
-
-[sub_resource type="SpatialMaterial" id=70]
-render_priority = 1
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.125, 0.625, 0 )
-
-[sub_resource type="SpatialMaterial" id=71]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=72]
-render_priority = 1
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.25, 0.625, 0 )
-
-[sub_resource type="SpatialMaterial" id=73]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=74]
-render_priority = 1
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.125, 0.5, 0 )
-
-[sub_resource type="SpatialMaterial" id=75]
-render_priority = 1
-params_depth_draw_mode = 3
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.25, 0.5, 0 )
-
-[sub_resource type="SpatialMaterial" id=76]
-render_priority = 1
-params_depth_draw_mode = 3
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.375, 0.5, 0 )
-
-[sub_resource type="SpatialMaterial" id=77]
-render_priority = 1
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.375, 0.625, 0 )
-
-[sub_resource type="SpatialMaterial" id=78]
-render_priority = 1
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.5, 0.5, 0 )
-
-[sub_resource type="SpatialMaterial" id=79]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=80]
-render_priority = 1
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.625, 0.5, 0 )
-
-[sub_resource type="SpatialMaterial" id=81]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=82]
-render_priority = 1
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.75, 0.5, 0 )
-
-[sub_resource type="SpatialMaterial" id=83]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=84]
-render_priority = 1
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.875, 0.5, 0 )
-
-[sub_resource type="SpatialMaterial" id=85]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=86]
-render_priority = 1
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.5, 0.625, 0 )
-
-[sub_resource type="SpatialMaterial" id=87]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=88]
-render_priority = 1
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.625, 0.625, 0 )
-
-[sub_resource type="SpatialMaterial" id=89]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=90]
-render_priority = 1
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.75, 0.625, 0 )
-
-[sub_resource type="SpatialMaterial" id=91]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=92]
-render_priority = 1
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.875, 0.625, 0 )
-
-[sub_resource type="SpatialMaterial" id=93]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=94]
-render_priority = 1
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.5, 0.75, 0 )
-
-[sub_resource type="SpatialMaterial" id=95]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=96]
-render_priority = 1
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.625, 0.75, 0 )
-
-[sub_resource type="SpatialMaterial" id=97]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=98]
-render_priority = 1
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.75, 0.75, 0 )
-
-[sub_resource type="SpatialMaterial" id=99]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=100]
-render_priority = 1
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.875, 0.75, 0 )
-
-[sub_resource type="SpatialMaterial" id=101]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[sub_resource type="SpatialMaterial" id=102]
-render_priority = 1
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 0.125, 0.125, 1 )
-uv1_offset = Vector3( 0.875, 0.875, 0 )
-
-[sub_resource type="SpatialMaterial" id=103]
-resource_local_to_scene = true
-flags_transparent = true
-params_depth_draw_mode = 3
-albedo_color = Color( 0, 0.345098, 1, 0 )
-distance_fade_mode = 3
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 7.0
-
-[node name="Spatial" type="Spatial"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0 )
-
-[node name="Left_Up_Corner" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -17, 0, -12 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="Left_Up_Corner"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Left_Up_Corner/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="Left_Up_Corner" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
-
-[node name="Up" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -12, 0, -12 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 6 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="Up"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Up/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="Up" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 7 )
-
-[node name="Right_Up_Corner" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -7, 0, -12 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 8 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="Right_Up_Corner"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Right_Up_Corner/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="Right_Up_Corner" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 9 )
-
-[node name="Left" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -17, 0, -8 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 10 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="Left"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Left/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="Left" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 11 )
-
-[node name="Middle" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -12, 0, -8 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 12 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="Middle"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Middle/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="Middle" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 13 )
-
-[node name="Right" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -7, 0, -8 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 14 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="Right"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Right/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="Right" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 15 )
-
-[node name="Left_Lower_Corner" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -17, 0, -4 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 16 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="Left_Lower_Corner"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Left_Lower_Corner/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="Left_Lower_Corner" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 17 )
-
-[node name="Lower" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -12, 0, -4 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 18 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="Lower"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Lower/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="Lower" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 19 )
-
-[node name="Right_Lower_Corner" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -7, 0, -4 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 20 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="Right_Lower_Corner"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Right_Lower_Corner/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="Right_Lower_Corner" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 21 )
-
-[node name="VLine_Up" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -2, 0, -12 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 22 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="VLine_Up"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="VLine_Up/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="VLine_Up" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 23 )
-
-[node name="VLine" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -2, 0, -8 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 24 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="VLine"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="VLine/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="VLine" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 25 )
-
-[node name="VLine_Lower" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -2, 0, -4 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 26 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="VLine_Lower"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="VLine_Lower/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="VLine_Lower" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 27 )
-
-[node name="HLine_Left" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -17, 0, 0 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 28 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="HLine_Left"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="HLine_Left/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="HLine_Left" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 29 )
-
-[node name="HLine" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -12, 0, 0 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 30 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="HLine"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="HLine/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="HLine" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 31 )
-
-[node name="HLine_Right" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -7, 0, 0 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 32 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="HLine_Right"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="HLine_Right/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="HLine_Right" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 33 )
-
-[node name="Single" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -2, 0, 0 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 34 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="Single"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Single/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="Single" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 35 )
-
-[node name="Left_Up_Corner_DR" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 3, 0, -12 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 36 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="Left_Up_Corner_DR"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Left_Up_Corner_DR/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="Left_Up_Corner_DR" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 37 )
-
-[node name="Up_DR" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 8, 0, -12 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 38 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="Up_DR"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Up_DR/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="Up_DR" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 39 )
-
-[node name="Up_DL" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 13, 0, -12 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 40 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="Up_DL"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Up_DL/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="Up_DL" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 41 )
-
-[node name="Right_Up_Corner_DL" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 18, 0, -12 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 42 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="Right_Up_Corner_DL"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Right_Up_Corner_DL/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="Right_Up_Corner_DL" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 43 )
-
-[node name="Left_DR" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 3, 0, -8 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 44 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="Left_DR"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Left_DR/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="Left_DR" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 45 )
-
-[node name="Middle_DR" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 8, 0, -8 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 46 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="Middle_DR"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Middle_DR/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="Middle_DR" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 47 )
-
-[node name="Middle_DL" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 13, 0, -8 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 48 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="Middle_DL"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Middle_DL/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="Middle_DL" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 49 )
-
-[node name="Right_DL" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 18, 0, -8 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 50 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="Right_DL"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Right_DL/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="Right_DL" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 51 )
-
-[node name="Left_UR" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 3, 0, -4 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 52 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="Left_UR"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Left_UR/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="Left_UR" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 53 )
-
-[node name="Middle_UR" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 8, 0, -4 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 54 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="Middle_UR"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Middle_UR/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="Middle_UR" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 55 )
-
-[node name="Middle_UL" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 13, 0, -4 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 56 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="Middle_UL"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Middle_UL/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="Middle_UL" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 57 )
-
-[node name="Right_UL" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 18, 0, -4 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 58 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="Right_UL"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Right_UL/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="Right_UL" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 59 )
-
-[node name="Right_Down_Corner_UR" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 3, 0, 0 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 60 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="Right_Down_Corner_UR"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Right_Down_Corner_UR/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="Right_Down_Corner_UR" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 61 )
-
-[node name="Down_UR" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 8, 0, 0 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 62 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="Down_UR"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Down_UR/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="Down_UR" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 63 )
-
-[node name="Down_UL" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 13, 0, 0 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 64 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="Down_UL"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Down_UL/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="Down_UL" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 65 )
-
-[node name="Right_Down_Corner_UL" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 18, 0, 0 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 66 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="Right_Down_Corner_UL"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Right_Down_Corner_UL/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="Right_Down_Corner_UL" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 67 )
-
-[node name="VBridge" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -17, 0, 4 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 68 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="VBridge"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="VBridge/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="HBridge" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -17, 0, 8 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 69 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="HBridge"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="HBridge/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="LD_RU" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -12, 0, 4 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 70 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="LD_RU"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="LD_RU/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="LD_RU" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 71 )
-
-[node name="LU_RD" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -12, 0, 8 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 72 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="LU_RD"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="LU_RD/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="LU_RD" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 73 )
-
-[node name="Half_Wall" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -7, 0, 4 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 74 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="Half_Wall"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Half_Wall/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="Wall" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -2, 0, 4 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 75 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="Wall"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Wall/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="Wall_Tall_Top" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 3, 0, 4 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 76 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="Wall_Tall_Top"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Wall_Tall_Top/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="Wall_Tall_Down" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 3, 0, 8 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 77 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="Wall_Tall_Down"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Wall_Tall_Down/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="Left_RB" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -2, 0, 12 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 78 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="Left_RB"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Left_RB/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="Left_RB" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 79 )
-
-[node name="RB" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 3, 0, 12 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 80 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="RB"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="RB/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="RB" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 81 )
-
-[node name="LB" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 8, 0, 12 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 82 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="LB"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="LB/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="LB" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 83 )
-
-[node name="Right_LB" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 18, 0, 4 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 84 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="Right_LB"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Right_LB/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="Right_LB" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 85 )
-
-[node name="Top_DB" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 13, 0, 4 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 86 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="Top_DB"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Top_DB/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="Top_DB" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 87 )
-
-[node name="DB" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 8, 0, 8 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 88 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="DB"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="DB/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="DB" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 89 )
-
-[node name="UB" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -2, 0, 8 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 90 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="UB"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="UB/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="UB" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 91 )
-
-[node name="Down_UB" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 8, 0, 4 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 92 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="Down_UB"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Down_UB/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="Down_UB" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 93 )
-
-[node name="LB_RU" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 13, 0, 8 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 94 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="LB_RU"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="LB_RU/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="LB_RU" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 95 )
-
-[node name="RB_LU" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 18, 0, 8 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 96 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="RB_LU"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="RB_LU/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="RB_LU" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 97 )
-
-[node name="LB_RD" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 13, 0, 12 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 98 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="LB_RD"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="LB_RD/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="LB_RD" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 99 )
-
-[node name="RB_LD" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 18, 0, 12 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 100 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="RB_LD"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="RB_LD/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="RB_LD" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 101 )
-
-[node name="LB_RB" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -7, 0, 8 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 102 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody" type="StaticBody" parent="LB_RB"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="LB_RB/StaticBody"]
-shape = SubResource( 3 )
-
-[node name="AutoGrid_Bitmask" parent="LB_RB" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 103 )
-
-[node name="Ground_agrid" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -17, 0, -12 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+
+[node name="Left_Up_Corner" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -17, 0, -12)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Left_Up_Corner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Left_Up_Corner/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="Left_Up_Corner" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="Up" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -12, 0, -12)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Up"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Up/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="Up" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="Right_Up_Corner" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -7, 0, -12)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Right_Up_Corner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Right_Up_Corner/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="Right_Up_Corner" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="Left" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -17, 0, -8)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Left"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Left/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="Left" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="Middle" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -12, 0, -8)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Middle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Middle/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="Middle" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="Right" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -7, 0, -8)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Right"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Right/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="Right" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="Left_Lower_Corner" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -17, 0, -4)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Left_Lower_Corner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Left_Lower_Corner/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="Left_Lower_Corner" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="Lower" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -12, 0, -4)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Lower"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Lower/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="Lower" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="Right_Lower_Corner" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -7, 0, -4)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Right_Lower_Corner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Right_Lower_Corner/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="Right_Lower_Corner" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="VLine_Up" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -2, 0, -12)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="VLine_Up"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VLine_Up/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="VLine_Up" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="VLine" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -2, 0, -8)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="VLine"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VLine/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="VLine" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="VLine_Lower" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -2, 0, -4)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="VLine_Lower"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VLine_Lower/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="VLine_Lower" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="HLine_Left" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -17, 0, 0)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="HLine_Left"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HLine_Left/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="HLine_Left" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="HLine" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -12, 0, 0)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="HLine"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HLine/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="HLine" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="HLine_Right" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -7, 0, 0)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="HLine_Right"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HLine_Right/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="HLine_Right" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="Single" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -2, 0, 0)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Single"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Single/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="Single" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="Left_Up_Corner_DR" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 3, 0, -12)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Left_Up_Corner_DR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Left_Up_Corner_DR/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="Left_Up_Corner_DR" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="Up_DR" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 8, 0, -12)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Up_DR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Up_DR/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="Up_DR" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="Up_DL" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 13, 0, -12)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Up_DL"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Up_DL/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="Up_DL" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="Right_Up_Corner_DL" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 18, 0, -12)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Right_Up_Corner_DL"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Right_Up_Corner_DL/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="Right_Up_Corner_DL" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="Left_DR" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 3, 0, -8)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Left_DR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Left_DR/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="Left_DR" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="Middle_DR" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 8, 0, -8)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Middle_DR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Middle_DR/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="Middle_DR" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="Middle_DL" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 13, 0, -8)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Middle_DL"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Middle_DL/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="Middle_DL" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="Right_DL" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 18, 0, -8)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Right_DL"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Right_DL/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="Right_DL" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="Left_UR" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 3, 0, -4)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Left_UR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Left_UR/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="Left_UR" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="Middle_UR" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 8, 0, -4)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Middle_UR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Middle_UR/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="Middle_UR" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="Middle_UL" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 13, 0, -4)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Middle_UL"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Middle_UL/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="Middle_UL" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="Right_UL" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 18, 0, -4)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Right_UL"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Right_UL/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="Right_UL" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="Right_Down_Corner_UR" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 3, 0, 0)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Right_Down_Corner_UR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Right_Down_Corner_UR/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="Right_Down_Corner_UR" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="Down_UR" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 8, 0, 0)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Down_UR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Down_UR/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="Down_UR" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="Down_UL" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 13, 0, 0)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Down_UL"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Down_UL/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="Down_UL" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="Right_Down_Corner_UL" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 18, 0, 0)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Right_Down_Corner_UL"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Right_Down_Corner_UL/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="Right_Down_Corner_UL" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="VBridge" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -17, 0, 4)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="VBridge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VBridge/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="HBridge" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -17, 0, 8)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="HBridge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HBridge/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="LD_RU" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -12, 0, 4)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="LD_RU"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LD_RU/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="LD_RU" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="LU_RD" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -12, 0, 8)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="LU_RD"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LU_RD/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="LU_RD" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="Half_Wall" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -7, 0, 4)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Half_Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Half_Wall/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="Wall" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -2, 0, 4)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="Wall_Tall_Top" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 3, 0, 4)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Wall_Tall_Top"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall_Tall_Top/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="Wall_Tall_Down" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 3, 0, 8)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Wall_Tall_Down"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall_Tall_Down/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="Left_RB" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -2, 0, 12)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Left_RB"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Left_RB/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="Left_RB" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="RB" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 3, 0, 12)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="RB"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RB/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="RB" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="LB" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 8, 0, 12)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="LB"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LB/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="LB" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="Right_LB" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 18, 0, 4)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Right_LB"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Right_LB/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="Right_LB" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="Top_DB" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 13, 0, 4)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Top_DB"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Top_DB/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="Top_DB" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="DB" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 8, 0, 8)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="DB"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DB/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="DB" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="UB" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -2, 0, 8)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="UB"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="UB/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="UB" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="Down_UB" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 8, 0, 4)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Down_UB"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Down_UB/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="Down_UB" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="LB_RU" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 13, 0, 8)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="LB_RU"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LB_RU/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="LB_RU" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="RB_LU" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 18, 0, 8)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="RB_LU"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RB_LU/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="RB_LU" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="LB_RD" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 13, 0, 12)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="LB_RD"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LB_RD/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="LB_RD" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="RB_LD" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 18, 0, 12)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="RB_LD"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RB_LD/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="RB_LD" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="LB_RB" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -7, 0, 8)
+mesh = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="LB_RB"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LB_RB/StaticBody3D"]
+shape = SubResource("3")
+
+[node name="AutoGrid_Bitmask" parent="LB_RB" instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0)
+mesh = SubResource("4")
+
+[node name="Ground_agrid" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -17, 0, -12)
+mesh = SubResource("1")

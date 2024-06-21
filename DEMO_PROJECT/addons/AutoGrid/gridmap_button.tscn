@@ -1,330 +1,256 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://bj8vtrhikitn4"]
 
-[ext_resource path="res://addons/AutoGrid/res/ErrorSign.svg" type="Texture" id=1]
-[ext_resource path="res://addons/AutoGrid/gridmap_button.gd" type="Script" id=2]
+[ext_resource type="Script" path="res://addons/AutoGrid/gridmap_button.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://dbiw3nviwl7vk" path="res://addons/AutoGrid/res/ErrorSign.svg" id="2_ejh46"]
 
-[sub_resource type="StyleBoxEmpty" id=1]
+[sub_resource type="StyleBoxEmpty" id="1"]
 
-[sub_resource type="StyleBoxEmpty" id=2]
+[sub_resource type="StyleBoxEmpty" id="2"]
 
 [node name="AutoGrid" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource("2")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-margin_right = 1024.0
-margin_bottom = 31.0
+layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 1
 text = "AutoGrid
 By XLIVE99"
-align = 1
+horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
-margin_top = 35.0
-margin_right = 1024.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 0, 15 )
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
 
 [node name="Label2" type="Label" parent="VBoxContainer"]
-margin_top = 54.0
-margin_right = 1024.0
-margin_bottom = 85.0
+layout_mode = 2
 size_flags_vertical = 1
 text = "Please read HELP.pdf for usage
 Thank you for downloading"
-align = 1
+horizontal_alignment = 1
 
 [node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
-margin_top = 89.0
-margin_right = 1024.0
-margin_bottom = 104.0
-rect_min_size = Vector2( 0, 15 )
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
 
 [node name="VBox" type="VBoxContainer" parent="VBoxContainer"]
-margin_top = 108.0
-margin_right = 1024.0
-margin_bottom = 438.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Autotile" type="HBoxContainer" parent="VBoxContainer/VBox"]
-margin_right = 1024.0
-margin_bottom = 24.0
+layout_mode = 2
 
 [node name="Autotile" type="Label" parent="VBoxContainer/VBox/Autotile"]
-margin_top = 2.0
-margin_right = 510.0
-margin_bottom = 22.0
-rect_min_size = Vector2( 0, 20 )
-mouse_filter = 1
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 text = "Autotile"
-valign = 1
-__meta__ = {
-"_editor_description_": ""
-}
 
 [node name="Autotile_Check" type="CheckBox" parent="VBoxContainer/VBox/Autotile"]
-margin_left = 514.0
-margin_right = 1024.0
-margin_bottom = 24.0
+layout_mode = 2
 size_flags_horizontal = 3
+button_pressed = true
 shortcut_in_tooltip = false
-pressed = true
 text = "On"
 
 [node name="Auto_Mode" type="HBoxContainer" parent="VBoxContainer/VBox"]
-margin_top = 28.0
-margin_right = 1024.0
-margin_bottom = 48.0
+layout_mode = 2
 
 [node name="Auto_Mode" type="Label" parent="VBoxContainer/VBox/Auto_Mode"]
-margin_right = 510.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 0, 20 )
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
 size_flags_horizontal = 3
 text = "Autotile Mode"
-valign = 1
 
 [node name="Auto_Mode_Opt" type="OptionButton" parent="VBoxContainer/VBox/Auto_Mode"]
-margin_left = 514.0
-margin_right = 1024.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 0, 20 )
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
 size_flags_horizontal = 3
 shortcut_in_tooltip = false
-text = "Full 3x3"
-items = [ "Full 3x3", null, false, 0, null, "Minimal 3x3", null, false, 1, null ]
+item_count = 2
 selected = 0
+popup/item_0/text = "Full 3x3"
+popup/item_0/id = 0
+popup/item_1/text = "Minimal 3x3"
+popup/item_1/id = 1
 
 [node name="Auto_Axis" type="HBoxContainer" parent="VBoxContainer/VBox"]
-margin_top = 52.0
-margin_right = 1024.0
-margin_bottom = 72.0
+layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/VBox/Auto_Axis"]
-margin_top = 3.0
-margin_right = 510.0
-margin_bottom = 17.0
-hint_tooltip = "Only uses selected axises while checking surroundings. 
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Only uses selected axises while checking surroundings. 
 If you are using only 2 axises (For example X & Z for top 
 down games) then leaving this as \"All\" or \"X & Z Axis\" 
 will be fine. If you are planning to create different 
 height tiles than using \"All\" might cause problem if 
 that tile has a bottom or top neighbour."
 mouse_filter = 1
-size_flags_horizontal = 3
 text = "Autotile Axis"
 
 [node name="Auto_Axis_Opt" type="OptionButton" parent="VBoxContainer/VBox/Auto_Axis"]
-margin_left = 514.0
-margin_right = 1024.0
-margin_bottom = 20.0
+layout_mode = 2
 size_flags_horizontal = 3
-text = "All"
-items = [ "All", null, false, 0, null, "Y & Z Axises", null, false, 1, null, "X & Z Axises", null, false, 2, null, "X & Y Axises", null, false, 3, null ]
+item_count = 4
 selected = 0
+popup/item_0/text = "All"
+popup/item_0/id = 0
+popup/item_1/text = "Y & Z Axises"
+popup/item_1/id = 1
+popup/item_2/text = "X & Z Axises"
+popup/item_2/id = 2
+popup/item_3/text = "X & Y Axises"
+popup/item_3/id = 3
 
 [node name="Auto_Scan_Axis" type="HBoxContainer" parent="VBoxContainer/VBox"]
-margin_top = 76.0
-margin_right = 1024.0
-margin_bottom = 96.0
+layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/VBox/Auto_Scan_Axis"]
-margin_top = 3.0
-margin_right = 510.0
-margin_bottom = 17.0
-hint_tooltip = "Uses selected axis as normal of the tile. Select which 
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Uses selected axis as normal of the tile. Select which 
 axis direction your tile is facing (or which direction is 
 considered ground). For example, the ground will use 
 \"Y axis\" while background wall will use \"Z axis\" in 
 2.5D games."
 mouse_filter = 1
-size_flags_horizontal = 3
 text = "Tile Normal Axis"
 
 [node name="Auto_Scan_Axis_Opt" type="OptionButton" parent="VBoxContainer/VBox/Auto_Scan_Axis"]
-margin_left = 514.0
-margin_right = 1024.0
-margin_bottom = 20.0
+layout_mode = 2
 size_flags_horizontal = 3
-text = "Y Axis"
-items = [ "X Axis", null, false, 1, null, "Y Axis", null, false, 2, null, "Z Axis", null, false, 3, null ]
+item_count = 3
 selected = 1
+popup/item_0/text = "X Axis"
+popup/item_0/id = 0
+popup/item_1/text = "Y Axis"
+popup/item_1/id = 1
+popup/item_2/text = "Z Axis"
+popup/item_2/id = 2
 
 [node name="Control" type="Control" parent="VBoxContainer/VBox"]
-margin_top = 100.0
-margin_right = 1024.0
-margin_bottom = 115.0
-rect_min_size = Vector2( 0, 15 )
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
 
 [node name="Edit_Mode" type="HBoxContainer" parent="VBoxContainer/VBox"]
-margin_top = 119.0
-margin_right = 1024.0
-margin_bottom = 143.0
+layout_mode = 2
 
 [node name="Edit_Mode" type="Label" parent="VBoxContainer/VBox/Edit_Mode"]
-margin_top = 2.0
-margin_right = 510.0
-margin_bottom = 22.0
-rect_min_size = Vector2( 0, 20 )
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
 size_flags_horizontal = 3
 text = "Edit Mode"
-valign = 1
 
 [node name="Edit_Mode_Checked" type="CheckBox" parent="VBoxContainer/VBox/Edit_Mode"]
-margin_left = 514.0
-margin_right = 1024.0
-margin_bottom = 24.0
+layout_mode = 2
 size_flags_horizontal = 3
 shortcut_in_tooltip = false
 text = "On"
 
 [node name="Performance_Mode" type="HBoxContainer" parent="VBoxContainer/VBox"]
-margin_top = 147.0
-margin_right = 1024.0
-margin_bottom = 171.0
-rect_min_size = Vector2( 0, 24 )
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
 
 [node name="Performance_Mode" type="Label" parent="VBoxContainer/VBox/Performance_Mode"]
-margin_top = 5.0
-margin_right = 510.0
-margin_bottom = 19.0
+layout_mode = 2
 size_flags_horizontal = 3
 text = "Performance Mode"
 
 [node name="CheckBox" type="CheckBox" parent="VBoxContainer/VBox/Performance_Mode"]
-margin_left = 514.0
-margin_right = 1024.0
-margin_bottom = 24.0
+layout_mode = 2
 size_flags_horizontal = 3
+button_pressed = true
 shortcut_in_tooltip = false
-pressed = true
 text = "On"
 
 [node name="Buttons" type="HBoxContainer" parent="VBoxContainer"]
 visible = false
-margin_top = 418.0
-margin_right = 1024.0
-margin_bottom = 438.0
+layout_mode = 2
 alignment = 1
 
 [node name="Control" type="CenterContainer" parent="VBoxContainer/Buttons"]
-margin_right = 510.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 0, 20 )
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Reload_Autotile" type="Button" parent="VBoxContainer/Buttons/Control"]
-margin_left = 185.0
-margin_right = 324.0
-margin_bottom = 20.0
+layout_mode = 2
 text = "Reload Autotile Info"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Control2" type="CenterContainer" parent="VBoxContainer/Buttons"]
-margin_left = 514.0
-margin_right = 1024.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 0, 20 )
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Create_Autotile" type="Button" parent="VBoxContainer/Buttons/Control2"]
-margin_left = 186.0
-margin_right = 323.0
-margin_bottom = 20.0
+layout_mode = 2
 shortcut_in_tooltip = false
 text = "Create Autotile Info"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HSeparator3" type="HSeparator" parent="VBoxContainer"]
-margin_top = 442.0
-margin_right = 1024.0
-margin_bottom = 457.0
-rect_min_size = Vector2( 0, 15 )
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
 
 [node name="Warning" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 461.0
-margin_right = 1024.0
-margin_bottom = 525.0
+layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/Warning"]
-margin_right = 64.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 64, 64 )
-texture = ExtResource( 1 )
-expand = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("2_ejh46")
+expand_mode = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/Warning"]
-margin_left = 68.0
-margin_top = 25.0
-margin_right = 1024.0
-margin_bottom = 39.0
-rect_min_size = Vector2( 100, 0 )
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
 size_flags_horizontal = 3
-text = "Please do not change automatically created node names! And do not change .agrid file paths!"
-autowrap = true
+text = "Please DO NOT change automatically created node names! And do not change .agrid file paths!"
+autowrap_mode = 2
 
 [node name="HSeparator4" type="HSeparator" parent="VBoxContainer"]
-margin_top = 529.0
-margin_right = 1024.0
-margin_bottom = 544.0
-rect_min_size = Vector2( 0, 15 )
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
 
 [node name="Bug_Report" type="VBoxContainer" parent="VBoxContainer"]
-margin_top = 548.0
-margin_right = 1024.0
-margin_bottom = 582.0
-rect_min_size = Vector2( 0, 28 )
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Github_Rich" type="RichTextLabel" parent="VBoxContainer/Bug_Report"]
-margin_right = 1024.0
-margin_bottom = 15.0
-rect_min_size = Vector2( 0, 15 )
-custom_styles/normal = SubResource( 1 )
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+theme_override_styles/normal = SubResource("1")
 bbcode_enabled = true
-bbcode_text = "For feature request or bug report, you can open issue from [url=https://github.com/XLIVE99/AutoGrid]github repo[/url]"
-text = "For feature request or bug report, you can open issue from github repo"
-fit_content_height = true
+text = "For [color=62ED53]feature request[/color] or [color=EF2D3A]bug report[/color], you can open issue from [url=https://github.com/XLIVE99/AutoGrid]github repo[/url]"
+fit_content = true
 scroll_active = false
 
 [node name="Github_Rich2" type="RichTextLabel" parent="VBoxContainer/Bug_Report"]
-margin_top = 19.0
-margin_right = 1024.0
-margin_bottom = 34.0
-rect_min_size = Vector2( 0, 15 )
-custom_styles/normal = SubResource( 2 )
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+theme_override_styles/normal = SubResource("2")
 bbcode_enabled = true
-bbcode_text = "Also you can see my other works from my [url=https://www.linkedin.com/in/burak-idilmek-856669175/]LinkedIn[/url] (Feel free to message me)"
-text = "Also you can see my other works from my LinkedIn (Feel free to message me)"
-fit_content_height = true
+text = "Also you can see my other works from my [url=https://www.linkedin.com/in/burak-idilmek-856669175/]LinkedIn[/url] (Feel free to message me)"
+fit_content = true
 scroll_active = false
 
 [node name="Version_label" type="Label" parent="VBoxContainer"]
-margin_top = 586.0
-margin_right = 1024.0
-margin_bottom = 600.0
+layout_mode = 2
 size_flags_vertical = 1
-custom_colors/font_color = Color( 0.568627, 0.568627, 0.568627, 1 )
+theme_override_colors/font_color = Color(0.568627, 0.568627, 0.568627, 1)
 text = "Version 1.2"
-align = 2
 
 [connection signal="toggled" from="VBoxContainer/VBox/Autotile/Autotile_Check" to="." method="_on_Autotile_Check_toggled"]
 [connection signal="item_selected" from="VBoxContainer/VBox/Auto_Mode/Auto_Mode_Opt" to="." method="_on_OptionButton_item_selected"]

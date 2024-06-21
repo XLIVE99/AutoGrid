@@ -1,4 +1,4 @@
-tool
+@tool
 extends Control
 
 var popup : PopupMenu
@@ -15,8 +15,8 @@ func _enter_tree():
 	popup.set_item_accelerator(1, KEY_Q | KEY_MASK_SHIFT)
 	popup.set_item_accelerator(2, KEY_1 | KEY_MASK_SHIFT)
 	popup.set_item_accelerator(3, KEY_2 | KEY_MASK_SHIFT)
-	if !popup.is_connected("id_pressed", self, "popup_pressed"):
-		popup.connect("id_pressed", self, "popup_pressed")
+	if !popup.is_connected("id_pressed", Callable(self, "popup_pressed")):
+		popup.connect("id_pressed", Callable(self, "popup_pressed"))
 	
 	auto_bitmask = preload("res://addons/AutoGrid/AutoGrid_Bitmask.tscn")
 
@@ -37,12 +37,12 @@ func popup_pressed(id):
 func create_bitmask():
 	var selected = core.get_selection()
 	if selected == null:
-		print("Please select MeshInstance.")
+		print("Please select MeshInstance3D.")
 		return
 	if selected.has_node("AutoGrid_Bitmask"):
 		print("Selected node already has a bitmask.")
 	else:
-		var bitmask = auto_bitmask.instance()
+		var bitmask = auto_bitmask.instantiate()
 		selected.add_child(bitmask)
 		core.set_bitmask(bitmask)
 		bitmask.global_transform.basis = Basis()
@@ -50,7 +50,7 @@ func create_bitmask():
 func remove_bitmask():
 	var selected = core.get_selection()
 	if selected == null:
-		print("Please select MeshInstance.")
+		print("Please select MeshInstance3D.")
 		return
 	if selected.has_node("AutoGrid_Bitmask"):
 		var bitmask = selected.get_node("AutoGrid_Bitmask")
@@ -66,7 +66,7 @@ func decrease_size():
 func set_icon():
 	var selected = core.get_selection()
 	if selected == null:
-		print("Please select MeshInstance.")
+		print("Please select MeshInstance3D.")
 		return
 	if selected.has_node("AutoGrid_Bitmask"):
 		core.change_icon(selected)
