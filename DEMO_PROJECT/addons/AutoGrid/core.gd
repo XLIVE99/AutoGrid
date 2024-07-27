@@ -57,11 +57,13 @@ func _handles(object) -> bool:
 		# Need improvement!
 		var meshInstance = is_any_parent(object, "MeshInstance3D")
 		if meshInstance.name.begins_with("AutoGrid"):
+			# WARNING: Parent is outside of the tree in AutoGrid_Bitmask.tscn
 			meshInstance = meshInstance.get_parent()
 		
-		# Always update current mesh instance
-		# only used in edit mode
-		currentMeshInstance = meshInstance
+		if meshInstance.is_inside_tree():
+			# Always update current mesh instance
+			# only used in edit mode
+			currentMeshInstance = meshInstance
 		
 		if editMode:
 			#activateButton.show()
