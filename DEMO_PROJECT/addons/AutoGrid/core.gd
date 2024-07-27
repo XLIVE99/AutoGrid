@@ -49,7 +49,7 @@ func _handles(object) -> bool:
 	if object is GridMap:
 		#activateButton.hide()
 		return true
-	elif object is Node and is_instance_valid(is_any_parent(object, "MeshInstance3D")):
+	elif object is Spatial and is_instance_valid(is_any_parent(object, "MeshInstance3D")):
 		
 		# Since bitmasks are meshInstance if we click on bitmask, AutoGrid
 		# detect it as a tile. I have implemented a hacky solution for now
@@ -71,12 +71,13 @@ func _handles(object) -> bool:
 		# Check if the user selected multiple nodes
 		# Don't use object variable becuase "MultiNodeEdit" type used when multiple objects selected
 		var selecteds = get_selection_list()
-		for selected in selecteds:
-			if selected is MeshInstance3D:
-				#activateButton.show()
-				showActivateBtn = true
-				# DO NOT RETURN TRUE, Multiple edit is not supported yet due to AutoGrid
-				# depends on currentMeshInstance variable
+		if selecteds != null:
+			for selected in selecteds:
+				if selected is MeshInstance3D:
+					#activateButton.show()
+					showActivateBtn = true
+					# DO NOT RETURN TRUE, Multiple edit is not supported yet due to AutoGrid
+					# depends on currentMeshInstance variable
 	
 	activateButton.visible = showActivateBtn
 	return false
