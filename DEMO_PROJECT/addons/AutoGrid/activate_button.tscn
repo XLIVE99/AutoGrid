@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://q1yc6xlhs6v1"]
 
 [ext_resource type="Script" path="res://addons/AutoGrid/edit_button.gd" id="2"]
-[ext_resource type="Texture2D" uid="uid://dbqfwhscvlu6s" path="res://addons/AutoGrid/res/GridEdit.svg" id="2_sj8gp"]
+[ext_resource type="Texture2D" uid="uid://dbqfwhscvlu6s" path="res://addons/AutoGrid/res/GridEdit.svg" id="2_qo3u6"]
 
 [node name="Edit_Mode" type="Control"]
 layout_mode = 3
@@ -18,7 +18,7 @@ layout_mode = 0
 offset_right = 120.0
 offset_bottom = 24.0
 text = "AutoGrid"
-icon = ExtResource("2_sj8gp")
+icon = ExtResource("2_qo3u6")
 expand_icon = true
 switch_on_hover = true
 item_count = 11

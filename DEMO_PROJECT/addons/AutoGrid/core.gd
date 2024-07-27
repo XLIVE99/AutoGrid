@@ -49,7 +49,7 @@ func _handles(object) -> bool:
 	if object is GridMap:
 		#activateButton.hide()
 		return true
-	elif object is Spatial and is_instance_valid(is_any_parent(object, "MeshInstance3D")):
+	elif object is Node3D and is_instance_valid(is_any_parent(object, "MeshInstance3D")):
 		
 		# Since bitmasks are meshInstance if we click on bitmask, AutoGrid
 		# detect it as a tile. I have implemented a hacky solution for now
