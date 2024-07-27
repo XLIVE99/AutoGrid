@@ -7,124 +7,177 @@
 radial_segments = 8
 rings = 4
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jpig2"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p4s0r"]
 resource_local_to_scene = true
+transparency = 1
 shading_mode = 2
-albedo_color = Color(1, 1, 1, 0.15)
+albedo_color = Color(0, 0, 0.345098, 0)
 
 [sub_resource type="BoxMesh" id="3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_225ob"]
 resource_local_to_scene = true
+transparency = 1
 shading_mode = 2
+albedo_color = Color(1, 1, 1, 0.14902)
 
 [sub_resource type="BoxShape3D" id="5"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2qoel"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u0r7i"]
 resource_local_to_scene = true
+transparency = 1
 shading_mode = 2
+albedo_color = Color(1, 1, 1, 0.14902)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8efax"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bflln"]
 resource_local_to_scene = true
+transparency = 1
 shading_mode = 2
+albedo_color = Color(1, 1, 1, 0.14902)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_boag3"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7dlun"]
 resource_local_to_scene = true
+transparency = 1
 shading_mode = 2
+albedo_color = Color(1, 1, 1, 0.14902)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qo66m"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c4b7m"]
 resource_local_to_scene = true
+transparency = 1
 shading_mode = 2
+albedo_color = Color(1, 1, 1, 0.14902)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lyviu"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yugxh"]
 resource_local_to_scene = true
+transparency = 1
 shading_mode = 2
+albedo_color = Color(1, 1, 1, 0.14902)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ql3ty"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w3usl"]
 resource_local_to_scene = true
+transparency = 1
 shading_mode = 2
+albedo_color = Color(1, 1, 1, 0.14902)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hxk7v"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7bsy5"]
 resource_local_to_scene = true
+transparency = 1
 shading_mode = 2
+albedo_color = Color(1, 1, 1, 0.14902)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w2x66"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ehlfk"]
 resource_local_to_scene = true
+transparency = 1
 shading_mode = 2
+albedo_color = Color(1, 1, 1, 0.14902)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8blph"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sy1vq"]
 resource_local_to_scene = true
+transparency = 1
 shading_mode = 2
+albedo_color = Color(1, 1, 1, 0.14902)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ocxpg"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d8uas"]
 resource_local_to_scene = true
+transparency = 1
 shading_mode = 2
+albedo_color = Color(1, 1, 1, 0.14902)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wwauw"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bbsmk"]
 resource_local_to_scene = true
+transparency = 1
 shading_mode = 2
+albedo_color = Color(1, 1, 1, 0.14902)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_51e78"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_srmd3"]
 resource_local_to_scene = true
+transparency = 1
 shading_mode = 2
+albedo_color = Color(1, 1, 1, 0.14902)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fu7uu"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2edq1"]
 resource_local_to_scene = true
+transparency = 1
 shading_mode = 2
+albedo_color = Color(1, 1, 1, 0.14902)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nexgq"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_55lbw"]
 resource_local_to_scene = true
+transparency = 1
 shading_mode = 2
+albedo_color = Color(1, 1, 1, 0.14902)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bf27i"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1d1lm"]
 resource_local_to_scene = true
+transparency = 1
 shading_mode = 2
+albedo_color = Color(1, 1, 1, 0.14902)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uxed1"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xju05"]
 resource_local_to_scene = true
+transparency = 1
 shading_mode = 2
+albedo_color = Color(1, 1, 1, 0.14902)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7qylf"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gq4vg"]
 resource_local_to_scene = true
+transparency = 1
 shading_mode = 2
+albedo_color = Color(1, 1, 1, 0.14902)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gybrf"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aiqti"]
 resource_local_to_scene = true
+transparency = 1
 shading_mode = 2
+albedo_color = Color(1, 1, 1, 0.14902)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kxp5s"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_km4en"]
 resource_local_to_scene = true
+transparency = 1
 shading_mode = 2
+albedo_color = Color(1, 1, 1, 0.14902)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tn16y"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f56y6"]
 resource_local_to_scene = true
+transparency = 1
 shading_mode = 2
+albedo_color = Color(1, 1, 1, 0.14902)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cgmxe"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i8bol"]
 resource_local_to_scene = true
+transparency = 1
 shading_mode = 2
+albedo_color = Color(1, 1, 1, 0.14902)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bjv4n"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hgko1"]
 resource_local_to_scene = true
+transparency = 1
 shading_mode = 2
+albedo_color = Color(1, 1, 1, 0.14902)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cyimf"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ppnlm"]
 resource_local_to_scene = true
+transparency = 1
 shading_mode = 2
+albedo_color = Color(1, 1, 1, 0.14902)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wjb5n"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fxw3k"]
 resource_local_to_scene = true
+transparency = 1
 shading_mode = 2
+albedo_color = Color(1, 1, 1, 0.14902)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hhwok"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_njsqk"]
 resource_local_to_scene = true
+transparency = 1
 shading_mode = 2
+albedo_color = Color(1, 1, 1, 0.14902)
 
 [node name="AutoGrid_Bitmask" type="MeshInstance3D"]
 cast_shadow = 0
 gi_mode = 0
 mesh = SubResource("1")
-surface_material_override/0 = SubResource("StandardMaterial3D_jpig2")
+surface_material_override/0 = SubResource("StandardMaterial3D_p4s0r")
 script = ExtResource("2")
 
 [node name="Bitmask_Box" type="StaticBody3D" parent="."]
@@ -152,7 +205,7 @@ script = ExtResource("1")
 cast_shadow = 0
 gi_mode = 0
 mesh = SubResource("3")
-surface_material_override/0 = SubResource("StandardMaterial3D_2qoel")
+surface_material_override/0 = SubResource("StandardMaterial3D_u0r7i")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box2"]
 shape = SubResource("5")
@@ -167,7 +220,7 @@ script = ExtResource("1")
 cast_shadow = 0
 gi_mode = 0
 mesh = SubResource("3")
-surface_material_override/0 = SubResource("StandardMaterial3D_8efax")
+surface_material_override/0 = SubResource("StandardMaterial3D_bflln")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box3"]
 shape = SubResource("5")
@@ -182,7 +235,7 @@ script = ExtResource("1")
 cast_shadow = 0
 gi_mode = 0
 mesh = SubResource("3")
-surface_material_override/0 = SubResource("StandardMaterial3D_boag3")
+surface_material_override/0 = SubResource("StandardMaterial3D_7dlun")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box4"]
 shape = SubResource("5")
@@ -197,7 +250,7 @@ script = ExtResource("1")
 cast_shadow = 0
 gi_mode = 0
 mesh = SubResource("3")
-surface_material_override/0 = SubResource("StandardMaterial3D_qo66m")
+surface_material_override/0 = SubResource("StandardMaterial3D_c4b7m")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box5"]
 shape = SubResource("5")
@@ -212,7 +265,7 @@ script = ExtResource("1")
 cast_shadow = 0
 gi_mode = 0
 mesh = SubResource("3")
-surface_material_override/0 = SubResource("StandardMaterial3D_lyviu")
+surface_material_override/0 = SubResource("StandardMaterial3D_yugxh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box6"]
 shape = SubResource("5")
@@ -227,7 +280,7 @@ script = ExtResource("1")
 cast_shadow = 0
 gi_mode = 0
 mesh = SubResource("3")
-surface_material_override/0 = SubResource("StandardMaterial3D_ql3ty")
+surface_material_override/0 = SubResource("StandardMaterial3D_w3usl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box7"]
 shape = SubResource("5")
@@ -242,7 +295,7 @@ script = ExtResource("1")
 cast_shadow = 0
 gi_mode = 0
 mesh = SubResource("3")
-surface_material_override/0 = SubResource("StandardMaterial3D_hxk7v")
+surface_material_override/0 = SubResource("StandardMaterial3D_7bsy5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box8"]
 shape = SubResource("5")
@@ -257,7 +310,7 @@ script = ExtResource("1")
 cast_shadow = 0
 gi_mode = 0
 mesh = SubResource("3")
-surface_material_override/0 = SubResource("StandardMaterial3D_w2x66")
+surface_material_override/0 = SubResource("StandardMaterial3D_ehlfk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box9"]
 shape = SubResource("5")
@@ -272,7 +325,7 @@ script = ExtResource("1")
 cast_shadow = 0
 gi_mode = 0
 mesh = SubResource("3")
-surface_material_override/0 = SubResource("StandardMaterial3D_8blph")
+surface_material_override/0 = SubResource("StandardMaterial3D_sy1vq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box10"]
 shape = SubResource("5")
@@ -287,7 +340,7 @@ script = ExtResource("1")
 cast_shadow = 0
 gi_mode = 0
 mesh = SubResource("3")
-surface_material_override/0 = SubResource("StandardMaterial3D_ocxpg")
+surface_material_override/0 = SubResource("StandardMaterial3D_d8uas")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box11"]
 shape = SubResource("5")
@@ -302,7 +355,7 @@ script = ExtResource("1")
 cast_shadow = 0
 gi_mode = 0
 mesh = SubResource("3")
-surface_material_override/0 = SubResource("StandardMaterial3D_wwauw")
+surface_material_override/0 = SubResource("StandardMaterial3D_bbsmk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box12"]
 shape = SubResource("5")
@@ -317,7 +370,7 @@ script = ExtResource("1")
 cast_shadow = 0
 gi_mode = 0
 mesh = SubResource("3")
-surface_material_override/0 = SubResource("StandardMaterial3D_51e78")
+surface_material_override/0 = SubResource("StandardMaterial3D_srmd3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box13"]
 shape = SubResource("5")
@@ -332,7 +385,7 @@ script = ExtResource("1")
 cast_shadow = 0
 gi_mode = 0
 mesh = SubResource("3")
-surface_material_override/0 = SubResource("StandardMaterial3D_fu7uu")
+surface_material_override/0 = SubResource("StandardMaterial3D_2edq1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box14"]
 shape = SubResource("5")
@@ -347,7 +400,7 @@ script = ExtResource("1")
 cast_shadow = 0
 gi_mode = 0
 mesh = SubResource("3")
-surface_material_override/0 = SubResource("StandardMaterial3D_nexgq")
+surface_material_override/0 = SubResource("StandardMaterial3D_55lbw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box15"]
 shape = SubResource("5")
@@ -362,7 +415,7 @@ script = ExtResource("1")
 cast_shadow = 0
 gi_mode = 0
 mesh = SubResource("3")
-surface_material_override/0 = SubResource("StandardMaterial3D_bf27i")
+surface_material_override/0 = SubResource("StandardMaterial3D_1d1lm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box16"]
 shape = SubResource("5")
@@ -377,7 +430,7 @@ script = ExtResource("1")
 cast_shadow = 0
 gi_mode = 0
 mesh = SubResource("3")
-surface_material_override/0 = SubResource("StandardMaterial3D_uxed1")
+surface_material_override/0 = SubResource("StandardMaterial3D_xju05")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box17"]
 shape = SubResource("5")
@@ -392,7 +445,7 @@ script = ExtResource("1")
 cast_shadow = 0
 gi_mode = 0
 mesh = SubResource("3")
-surface_material_override/0 = SubResource("StandardMaterial3D_7qylf")
+surface_material_override/0 = SubResource("StandardMaterial3D_gq4vg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box18"]
 shape = SubResource("5")
@@ -407,7 +460,7 @@ script = ExtResource("1")
 cast_shadow = 0
 gi_mode = 0
 mesh = SubResource("3")
-surface_material_override/0 = SubResource("StandardMaterial3D_gybrf")
+surface_material_override/0 = SubResource("StandardMaterial3D_aiqti")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box19"]
 shape = SubResource("5")
@@ -422,7 +475,7 @@ script = ExtResource("1")
 cast_shadow = 0
 gi_mode = 0
 mesh = SubResource("3")
-surface_material_override/0 = SubResource("StandardMaterial3D_kxp5s")
+surface_material_override/0 = SubResource("StandardMaterial3D_km4en")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box20"]
 shape = SubResource("5")
@@ -437,7 +490,7 @@ script = ExtResource("1")
 cast_shadow = 0
 gi_mode = 0
 mesh = SubResource("3")
-surface_material_override/0 = SubResource("StandardMaterial3D_tn16y")
+surface_material_override/0 = SubResource("StandardMaterial3D_f56y6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box21"]
 shape = SubResource("5")
@@ -452,7 +505,7 @@ script = ExtResource("1")
 cast_shadow = 0
 gi_mode = 0
 mesh = SubResource("3")
-surface_material_override/0 = SubResource("StandardMaterial3D_cgmxe")
+surface_material_override/0 = SubResource("StandardMaterial3D_i8bol")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box22"]
 shape = SubResource("5")
@@ -467,7 +520,7 @@ script = ExtResource("1")
 cast_shadow = 0
 gi_mode = 0
 mesh = SubResource("3")
-surface_material_override/0 = SubResource("StandardMaterial3D_bjv4n")
+surface_material_override/0 = SubResource("StandardMaterial3D_hgko1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box23"]
 shape = SubResource("5")
@@ -482,7 +535,7 @@ script = ExtResource("1")
 cast_shadow = 0
 gi_mode = 0
 mesh = SubResource("3")
-surface_material_override/0 = SubResource("StandardMaterial3D_cyimf")
+surface_material_override/0 = SubResource("StandardMaterial3D_ppnlm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box24"]
 shape = SubResource("5")
@@ -497,7 +550,7 @@ script = ExtResource("1")
 cast_shadow = 0
 gi_mode = 0
 mesh = SubResource("3")
-surface_material_override/0 = SubResource("StandardMaterial3D_wjb5n")
+surface_material_override/0 = SubResource("StandardMaterial3D_fxw3k")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box25"]
 shape = SubResource("5")
@@ -512,7 +565,7 @@ script = ExtResource("1")
 cast_shadow = 0
 gi_mode = 0
 mesh = SubResource("3")
-surface_material_override/0 = SubResource("StandardMaterial3D_hhwok")
+surface_material_override/0 = SubResource("StandardMaterial3D_njsqk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bitmask_Box26"]
 shape = SubResource("5")

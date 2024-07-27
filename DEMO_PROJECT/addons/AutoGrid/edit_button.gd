@@ -71,7 +71,7 @@ func remove_bitmask():
 	
 	for selected in selecteds:
 		
-		if !(selected is MeshInstance):
+		if !(selected is MeshInstance3D):
 			continue
 		
 		if selected.has_node("AutoGrid_Bitmask"):

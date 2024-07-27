@@ -72,7 +72,7 @@ func _handles(object) -> bool:
 		# Don't use object variable becuase "MultiNodeEdit" type used when multiple objects selected
 		var selecteds = get_selection_list()
 		for selected in selecteds:
-			if selected is MeshInstance:
+			if selected is MeshInstance3D:
 				#activateButton.show()
 				showActivateBtn = true
 				# DO NOT RETURN TRUE, Multiple edit is not supported yet due to AutoGrid
@@ -1197,12 +1197,12 @@ func _enter_tree():
 	
 	# Update current selected mesh
 	if is_instance_valid(get_selection()):
-		handles(get_selection())
+		_handles(get_selection())
 	
 	var eds = get_editor_interface().get_selection()
-	eds.connect("selection_changed", self, "_selection_changed")
+	eds.selection_changed.connect(_selection_changed)
 	
-	connect("scene_changed", self, "_scene_changed")
+	scene_changed.connect(_scene_changed)
 
 func _exit_tree():
 	#Remove popup menu from Project>Tool section (It will free popupMenu automatically)
@@ -1221,13 +1221,13 @@ func _exit_tree():
 		fileDialog.queue_free()
 	
 	var eds = get_editor_interface().get_selection()
-	eds.disconnect("selection_changed", self, "_selection_changed")
+	eds.disconnect("selection_changed", _selection_changed)
 	
 	if editMode:
 		# Update bitmask visibility (setget handles the rest)
 		self.editMode = false
 	
-	disconnect("scene_changed", self, "_scene_changed")
+	disconnect("scene_changed", _scene_changed)
 
 func _selection_changed():
 	if !is_instance_valid(get_selection()):
