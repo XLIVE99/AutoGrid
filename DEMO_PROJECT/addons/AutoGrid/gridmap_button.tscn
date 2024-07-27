@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bj8vtrhikitn4"]
+[gd_scene load_steps=4 format=3 uid="uid://bj8vtrhikitn4"]
 
 [ext_resource type="Script" path="res://addons/AutoGrid/gridmap_button.gd" id="2"]
-[ext_resource type="Texture2D" uid="uid://dbiw3nviwl7vk" path="res://addons/AutoGrid/res/ErrorSign.svg" id="2_ejh46"]
 
 [sub_resource type="StyleBoxEmpty" id="1"]
 
@@ -12,6 +11,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("2")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -209,7 +210,6 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/Warning"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture = ExtResource("2_ejh46")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/Warning"]
@@ -250,7 +250,8 @@ scroll_active = false
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0.568627, 0.568627, 0.568627, 1)
-text = "Version 1.2"
+text = "Version 1.3"
+horizontal_alignment = 2
 
 [connection signal="toggled" from="VBoxContainer/VBox/Autotile/Autotile_Check" to="." method="_on_Autotile_Check_toggled"]
 [connection signal="item_selected" from="VBoxContainer/VBox/Auto_Mode/Auto_Mode_Opt" to="." method="_on_OptionButton_item_selected"]
