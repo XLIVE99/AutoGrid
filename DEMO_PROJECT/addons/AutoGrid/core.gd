@@ -38,28 +38,61 @@ const AUTO_AXIS = [
 	42502468 #Only Z
 ]
 
+# This is called multiple times if multiple object selected
 func _handles(object) -> bool:
+	# Disable previous bitmask (if any)
 	if is_instance_valid(currentMeshInstance) && currentMeshInstance.has_node("AutoGrid_Bitmask"):
 		currentMeshInstance.get_node("AutoGrid_Bitmask").deactivate()
+	
+	var showActivateBtn := false
+	
 	if object is GridMap:
-		activateButton.hide()
+		#activateButton.hide()
 		return true
-	elif editMode && object is MeshInstance3D:
-		activateButton.show()
-		print("Shown activate button")
-		return true
-	activateButton.hide()
+	elif is_instance_valid(is_any_parent(object, "MeshInstance3D")):
+		
+		# Since bitmasks are meshInstance if we click on bitmask, AutoGrid
+		# detect it as a tile. I have implemented a hacky solution for now
+		# Need improvement!
+		var meshInstance = is_any_parent(object, "MeshInstance3D")
+		if meshInstance.name.begins_with("AutoGrid"):
+			meshInstance = meshInstance.get_parent()
+		
+		# Always update current mesh instance
+		# only used in edit mode
+		currentMeshInstance = meshInstance
+		
+		if editMode:
+			#activateButton.show()
+			showActivateBtn = true
+			return true
+	
+	if editMode:
+		# Check if the user selected multiple nodes
+		# Don't use object variable becuase "MultiNodeEdit" type used when multiple objects selected
+		var selecteds = get_selection_list()
+		for selected in selecteds:
+			if selected is MeshInstance:
+				#activateButton.show()
+				showActivateBtn = true
+				# DO NOT RETURN TRUE, Multiple edit is not supported yet due to AutoGrid
+				# depends on currentMeshInstance variable
+	
+	activateButton.visible = showActivateBtn
 	return false
 
 func _edit(object):
+	# Try load autotile info
 	if object is GridMap:
 		currentGridmap = object
 		currentMeshInstance = null
 		lastSize = currentGridmap.get_used_cells().size()
 		if autotileEnabled:
 			load_autotile_info()
-	elif object is MeshInstance3D:
-		currentMeshInstance = object
+	# Check if current selected mesh instance has bitmask then activate it
+	#elif is_instance_valid(is_any_parent(object, "MeshInstance3D")):
+	elif currentMeshInstance is MeshInstance3D:
+		#currentMeshInstance = is_any_parent(object, "MeshInstance3D")
 		if currentMeshInstance.has_node("AutoGrid_Bitmask"):
 			currentMeshInstance.get_node("AutoGrid_Bitmask").activate()
 			currentMeshInstance.get_node("AutoGrid_Bitmask").set_axis(editAxis)
@@ -120,12 +153,21 @@ func editmode_changed(val):
 	editMode = val
 	if !editMode:
 		activateButton.hide()
+		
 		if is_instance_valid(currentMeshInstance) && currentMeshInstance.has_node("AutoGrid_Bitmask"):
 			currentMeshInstance.get_node("AutoGrid_Bitmask").deactivate()
 	elif is_instance_valid(currentMeshInstance):
 		activateButton.show()
+		
 		if currentMeshInstance.has_node("AutoGrid_Bitmask"):
 			currentMeshInstance.get_node("AutoGrid_Bitmask").activate()
+	
+	# Update every bitmasks visibility
+	var children = get_editor_interface().get_edited_scene_root().get_children()
+	for child in children:
+		if child.has_node("AutoGrid_Bitmask"):
+			var bitmask = child.get_node("AutoGrid_Bitmask")
+			bitmask.visible = val
 
 func axis_changed(val):
 	editAxis = val
@@ -181,7 +223,7 @@ func bitmask_inputs(camera : Camera3D, event : InputEvent) -> int:
 			var space_state =  camera.get_world_3d().direct_space_state
 			var query = PhysicsRayQueryParameters3D.create(ray_origin, ray_origin + ray_dir * ray_distance, 524288)
 			var hit = space_state.intersect_ray(query)
-			if !hit.is_empty() and hit.collider is BITMASK_BOX:
+			if !hit.is_empty() and hit.collider is BITMASK_BOX and hit.collider.is_visible_in_tree():
 				hit.collider.toggle_box()
 				return EditorPlugin.AFTER_GUI_INPUT_STOP
 	
@@ -1152,6 +1194,15 @@ func _enter_tree():
 	fileDialog.filters = PackedStringArray( ["*.agrid ; AutoGrid files"])
 	fileDialog.connect("file_selected", Callable(self, "create_autotile_info"))
 	get_editor_interface().get_base_control().add_child(fileDialog)
+	
+	# Update current selected mesh
+	if is_instance_valid(get_selection()):
+		handles(get_selection())
+	
+	var eds = get_editor_interface().get_selection()
+	eds.connect("selection_changed", self, "_selection_changed")
+	
+	connect("scene_changed", self, "_scene_changed")
 
 func _exit_tree():
 	#Remove popup menu from Project>Tool section (It will free popupMenu automatically)
@@ -1168,15 +1219,36 @@ func _exit_tree():
 	get_editor_interface().get_base_control().remove_child(fileDialog)
 	if fileDialog:
 		fileDialog.queue_free()
+	
+	var eds = get_editor_interface().get_selection()
+	eds.disconnect("selection_changed", self, "_selection_changed")
+	
+	if editMode:
+		# Update bitmask visibility (setget handles the rest)
+		self.editMode = false
+	
+	disconnect("scene_changed", self, "_scene_changed")
+
+func _selection_changed():
+	if !is_instance_valid(get_selection()):
+		# If we clicked to nothing, then disable bitmask
+		if is_instance_valid(currentMeshInstance) && currentMeshInstance.has_node("AutoGrid_Bitmask"):
+			currentMeshInstance.get_node("AutoGrid_Bitmask").deactivate()
+
+func _scene_changed(root : Node):
+	
+	# New scene, no need to reload autotile info
+	if !is_instance_valid(root):
+		return
+	
+	# Load autotile info automatically when tab changes
+	reload_autotile_info(false)
+	
+	# Update visibility
+	self.editMode = editMode
 
 func create_autotile_pressed():
 	fileDialog.popup_centered_ratio()
-
-func get_selection():
-	var nodes = get_editor_interface().get_selection().get_selected_nodes()
-	if nodes.size() == 0:
-		return null
-	return nodes[0]
 
 func set_owner(n : Node):
 	n.owner = get_editor_interface().get_edited_scene_root()
@@ -1217,10 +1289,11 @@ func change_icon(iconNode : Node):
 			if bitmask.is_icon:
 				bitmask.disable_icon()
 
-func reload_autotile_info():
+func reload_autotile_info(verbose : bool):
 	var children = get_editor_interface().get_edited_scene_root().get_children()
 	if children.size() == 0:
-		print("--- AUTOGRID ERROR --- Empty scene!")
+		if verbose:
+			print("--- AUTOGRID ERROR --- Empty scene!")
 		return
 	
 	var fileDir : String
@@ -1230,7 +1303,8 @@ func reload_autotile_info():
 			break
 	
 	if fileDir.is_empty():
-		print("--- AUTOGRID ERROR --- autotile info couldn't find.")
+		if verbose:
+			print("--- AUTOGRID ERROR --- autotile info couldn't find.")
 		return
 	
 	load_autotile_info_from(fileDir, false)
@@ -1287,3 +1361,32 @@ func create_autotile_info(dir : String):
 	#saveFile.open(dir, File.WRITE) (Godot 3.x method)
 	saveFile.store_string(jsonDict)
 	saveFile.close()
+
+# ========= HELPER METHODS =========
+
+func get_selection():
+	var nodes = get_editor_interface().get_selection().get_selected_nodes()
+	if nodes.size() == 0:
+		return null
+	return nodes[0]
+
+func get_selection_list():
+	var nodes = get_editor_interface().get_selection().get_selected_nodes()
+	if nodes.size() == 0:
+		return null
+	return nodes
+
+func is_any_parent(node : Node, type : String) -> Node:
+	
+	if !is_instance_valid(node):
+		return null
+	
+	if node.is_class(type):
+		return node
+	
+	# Otherwise continue search parents recursively
+	if is_instance_valid(node.get_parent()):
+		return is_any_parent(node.get_parent(), type)
+	# There is no more parent left
+	else:
+		return null
