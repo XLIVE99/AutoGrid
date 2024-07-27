@@ -1234,10 +1234,11 @@ func _scene_changed(root : Node):
 	if !is_instance_valid(root):
 		return
 	
+	# WARNING! The user might lose progress if switch between tabs while editing the tiles
 	# Only try to find autotile info if edit mode is enabled
-	if editMode:
+	#if editMode:
 		# Load autotile info automatically when tab changes
-		reload_autotile_info(false)
+		#reload_autotile_info(false)
 	
 	# Update visibility
 	self.editMode = editMode
