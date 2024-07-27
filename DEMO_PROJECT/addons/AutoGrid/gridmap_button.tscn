@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bj8vtrhikitn4"]
+[gd_scene load_steps=5 format=3 uid="uid://bj8vtrhikitn4"]
 
 [ext_resource type="Script" path="res://addons/AutoGrid/gridmap_button.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://dbiw3nviwl7vk" path="res://addons/AutoGrid/res/ErrorSign.svg" id="2_k6g13"]
 
 [sub_resource type="StyleBoxEmpty" id="1"]
 
@@ -210,6 +211,7 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/Warning"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+texture = ExtResource("2_k6g13")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/Warning"]
