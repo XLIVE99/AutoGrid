@@ -45,10 +45,11 @@ func _handles(object) -> bool:
 		currentMeshInstance.get_node("AutoGrid_Bitmask").deactivate()
 	
 	var showActivateBtn := false
+	var shouldHandle := false
 	
 	if object is GridMap:
 		#activateButton.hide()
-		return true
+		shouldHandle = true
 	elif object is Node3D and is_instance_valid(is_any_parent(object, "MeshInstance3D")):
 		
 		# Since bitmasks are meshInstance if we click on bitmask, AutoGrid
@@ -65,7 +66,7 @@ func _handles(object) -> bool:
 		if editMode:
 			#activateButton.show()
 			showActivateBtn = true
-			return true
+			shouldHandle = true
 	
 	if editMode:
 		# Check if the user selected multiple nodes
@@ -80,7 +81,7 @@ func _handles(object) -> bool:
 					# depends on currentMeshInstance variable
 	
 	activateButton.visible = showActivateBtn
-	return false
+	return shouldHandle
 
 func _edit(object):
 	# Try load autotile info
