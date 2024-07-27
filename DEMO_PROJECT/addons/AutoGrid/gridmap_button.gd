@@ -22,7 +22,7 @@ func _on_Create_Autotile_pressed():
 	core.create_autotile_pressed()
 
 func _on_Reload_Autotile_pressed():
-	core.reload_autotile_info()
+	core.reload_autotile_info(true)
 
 func _on_CheckBox_toggled(button_pressed):
 	core.performanceMode = button_pressed

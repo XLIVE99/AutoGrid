@@ -4,7 +4,7 @@
 [ext_resource path="res://addons/AutoGrid/AutoGrid_Bitmask.tscn" type="PackedScene" id=3]
 
 [sub_resource type="QuadMesh" id=1]
-resource_name = "res://DEMO/res/Ground.agrid"
+resource_name = "res://DEMO/res_2D/Ground.agrid"
 size = Vector2( 2, 2 )
 
 [sub_resource type="SpatialMaterial" id=2]
@@ -753,6 +753,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="Left_Up_Corner" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 5 )
 
@@ -772,6 +773,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="Up" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 7 )
 
@@ -791,6 +793,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="Right_Up_Corner" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 9 )
 
@@ -810,6 +813,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="Left" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 11 )
 
@@ -829,6 +833,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="Middle" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 13 )
 
@@ -848,6 +853,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="Right" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 15 )
 
@@ -867,6 +873,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="Left_Lower_Corner" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 17 )
 
@@ -886,6 +893,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="Lower" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 19 )
 
@@ -905,6 +913,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="Right_Lower_Corner" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 21 )
 
@@ -924,6 +933,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="VLine_Up" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 23 )
 
@@ -943,6 +953,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="VLine" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 25 )
 
@@ -962,6 +973,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="VLine_Lower" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 27 )
 
@@ -981,6 +993,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="HLine_Left" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 29 )
 
@@ -1000,6 +1013,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="HLine" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 31 )
 
@@ -1019,6 +1033,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="HLine_Right" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 33 )
 
@@ -1038,6 +1053,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="Single" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 35 )
 
@@ -1057,6 +1073,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="Left_Up_Corner_DR" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 37 )
 
@@ -1076,6 +1093,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="Up_DR" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 39 )
 
@@ -1095,6 +1113,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="Up_DL" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 41 )
 
@@ -1114,6 +1133,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="Right_Up_Corner_DL" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 43 )
 
@@ -1133,6 +1153,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="Left_DR" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 45 )
 
@@ -1152,6 +1173,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="Middle_DR" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 47 )
 
@@ -1171,6 +1193,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="Middle_DL" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 49 )
 
@@ -1190,6 +1213,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="Right_DL" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 51 )
 
@@ -1209,6 +1233,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="Left_UR" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 53 )
 
@@ -1228,6 +1253,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="Middle_UR" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 55 )
 
@@ -1247,6 +1273,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="Middle_UL" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 57 )
 
@@ -1266,6 +1293,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="Right_UL" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 59 )
 
@@ -1285,6 +1313,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="Right_Down_Corner_UR" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 61 )
 
@@ -1304,6 +1333,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="Down_UR" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 63 )
 
@@ -1323,6 +1353,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="Down_UL" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 65 )
 
@@ -1342,6 +1373,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="Right_Down_Corner_UL" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 67 )
 
@@ -1389,6 +1421,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="LD_RU" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 71 )
 
@@ -1408,6 +1441,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="LU_RD" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 73 )
 
@@ -1483,6 +1517,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="Left_RB" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 79 )
 
@@ -1502,6 +1537,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="RB" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 81 )
 
@@ -1521,6 +1557,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="LB" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 83 )
 
@@ -1540,6 +1577,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="Right_LB" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 85 )
 
@@ -1559,6 +1597,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="Top_DB" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 87 )
 
@@ -1578,6 +1617,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="DB" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 89 )
 
@@ -1597,6 +1637,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="UB" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 91 )
 
@@ -1616,6 +1657,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="Down_UB" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 93 )
 
@@ -1635,6 +1677,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="LB_RU" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 95 )
 
@@ -1654,6 +1697,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="RB_LU" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 97 )
 
@@ -1673,6 +1717,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="LB_RD" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 99 )
 
@@ -1692,6 +1737,7 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="RB_LD" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 101 )
 
@@ -1711,11 +1757,13 @@ shape = SubResource( 3 )
 
 [node name="AutoGrid_Bitmask" parent="LB_RB" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = SubResource( 103 )
 
 [node name="Ground_agrid" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -17, 0, -12 )
+visible = false
 mesh = SubResource( 1 )
 material/0 = SubResource( 2 )
 __meta__ = {
