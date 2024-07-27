@@ -49,7 +49,7 @@ func handles(object) -> bool:
 	if object is GridMap:
 		#activateButton.hide()
 		return true
-	elif is_instance_valid(is_any_parent(object, "MeshInstance")):
+	elif object is Node and is_instance_valid(is_any_parent(object, "MeshInstance")):
 		
 		# Since bitmasks are meshInstance if we click on bitmask, AutoGrid
 		# detect it as a tile. I have implemented a hacky solution for now
@@ -1233,11 +1233,19 @@ func _scene_changed(root : Node):
 	if !is_instance_valid(root):
 		return
 	
-	# Load autotile info automatically when tab changes
-	reload_autotile_info(false)
+	# Only try to find autotile info if edit mode is enabled
+	if editMode:
+		# Load autotile info automatically when tab changes
+		reload_autotile_info(false)
 	
 	# Update visibility
 	self.editMode = editMode
+	
+	# Update bitmask sizes
+	set_bitmasks_size()
+	
+	# Update edit axis
+	self.editAxis = editAxis
 
 func create_autotile_pressed():
 	fileDialog.popup_centered_ratio()
