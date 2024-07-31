@@ -118,6 +118,13 @@ margin_bottom = 72.0
 margin_top = 3.0
 margin_right = 510.0
 margin_bottom = 17.0
+hint_tooltip = "Only uses selected axises while checking surroundings. 
+If you are using only 2 axises (For example X & Z for top 
+down games) then leaving this as \"All\" or \"X & Z Axis\" 
+will be fine. If you are planning to create different 
+height tiles than using \"All\" might cause problem if 
+that tile has a bottom or top neighbour."
+mouse_filter = 1
 size_flags_horizontal = 3
 text = "Autotile Axis"
 
@@ -127,7 +134,7 @@ margin_right = 1024.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
 text = "All"
-items = [ "All", null, false, 0, null, "Only X", null, false, 1, null, "Only Y", null, false, 2, null, "Only Z", null, false, 3, null ]
+items = [ "All", null, false, 0, null, "Y & Z Axises", null, false, 1, null, "X & Z Axises", null, false, 2, null, "X & Y Axises", null, false, 3, null ]
 selected = 0
 
 [node name="Auto_Scan_Axis" type="HBoxContainer" parent="VBoxContainer/VBox"]
@@ -139,16 +146,22 @@ margin_bottom = 96.0
 margin_top = 3.0
 margin_right = 510.0
 margin_bottom = 17.0
+hint_tooltip = "Uses selected axis as normal of the tile. Select which 
+axis direction your tile is facing (or which direction is 
+considered ground). For example, the ground will use 
+\"Y axis\" while background wall will use \"Z axis\" in 
+2.5D games."
+mouse_filter = 1
 size_flags_horizontal = 3
-text = "Autotile Scan Axis"
+text = "Tile Normal Axis"
 
 [node name="Auto_Scan_Axis_Opt" type="OptionButton" parent="VBoxContainer/VBox/Auto_Scan_Axis"]
 margin_left = 514.0
 margin_right = 1024.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
-text = "Only Y"
-items = [ "Only X", null, false, 1, null, "Only Y", null, false, 2, null, "Only Z", null, false, 3, null ]
+text = "Y Axis"
+items = [ "X Axis", null, false, 1, null, "Y Axis", null, false, 2, null, "Z Axis", null, false, 3, null ]
 selected = 1
 
 [node name="Control" type="Control" parent="VBoxContainer/VBox"]
@@ -310,7 +323,7 @@ margin_right = 1024.0
 margin_bottom = 600.0
 size_flags_vertical = 1
 custom_colors/font_color = Color( 0.568627, 0.568627, 0.568627, 1 )
-text = "Version 1.1"
+text = "Version 1.2"
 align = 2
 
 [connection signal="toggled" from="VBoxContainer/VBox/Autotile/Autotile_Check" to="." method="_on_Autotile_Check_toggled"]
