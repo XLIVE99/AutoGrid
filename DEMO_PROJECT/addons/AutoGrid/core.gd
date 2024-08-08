@@ -1267,7 +1267,6 @@ func set_owner(n : Node):
 	n.owner = get_editor_interface().get_edited_scene_root()
 
 func set_bitmask(bitmask : Node):
-	set_owner(bitmask)
 	bitmask.set_axis(editAxis)
 	bitmask.set_size(bitmaskSize)
 	bitmask.activate()

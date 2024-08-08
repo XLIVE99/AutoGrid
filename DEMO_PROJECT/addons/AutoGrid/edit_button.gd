@@ -53,8 +53,9 @@ func create_bitmask():
 #		if selected.has_node("AutoGrid_Bitmask"):
 #			print("--- AUTOGRID WARNING --- Selected node already has a bitmask.")
 		if !selected.has_node("AutoGrid_Bitmask"):
-			var bitmask = auto_bitmask.instance()
+			var bitmask = auto_bitmask.instantiate()
 			selected.add_child(bitmask)
+			bitmask.set_owner(get_tree().edited_scene_root)
 			core.set_bitmask(bitmask)
 			bitmask.global_transform.basis = Basis()
 			
