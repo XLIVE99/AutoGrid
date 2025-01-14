@@ -1,7 +1,7 @@
-tool
-extends StaticBody
+@tool
+extends StaticBody3D
 
-var enabled : bool setget enabled_changed
+var enabled : bool: set = enabled_changed
 
 func toggle_box():
 	self.enabled = !enabled
@@ -9,17 +9,17 @@ func toggle_box():
 func enabled_changed(val):
 	enabled = val
 	if enabled:
-		$MeshInstance.get_surface_material(0).albedo_color = Color.red
+		$MeshInstance3D.get_surface_override_material(0).albedo_color = Color.RED
 	else:
-		$MeshInstance.get_surface_material(0).albedo_color = Color.white
+		$MeshInstance3D.get_surface_override_material(0).albedo_color = Color.WHITE
 
 func activate():
 	collision_layer = 524288
-	$MeshInstance.get_surface_material(0).albedo_color.a = 1.0
+	$MeshInstance3D.get_surface_override_material(0).albedo_color.a = 1.0
 
 func deactivate():
 	collision_layer = 0
-	$MeshInstance.get_surface_material(0).albedo_color.a = 0.15
+	$MeshInstance3D.get_surface_override_material(0).albedo_color.a = 0.15
 
 func is_active() -> bool:
 	return collision_layer == 524288

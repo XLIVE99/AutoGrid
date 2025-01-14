@@ -1,5 +1,5 @@
-tool
-extends MeshInstance
+@tool
+extends MeshInstance3D
 
 var bit_value : int = 0
 var is_icon : bool = false
@@ -56,15 +56,15 @@ func enable_from_bit(mask : int):
 	if !is_active:
 		deactivate()
 	
-	is_icon = get_surface_material(0).albedo_color.a > 0.3
+	is_icon = get_surface_override_material(0).albedo_color.a > 0.3
 
 func set_for_icon():
 	is_icon = true
-	get_surface_material(0).albedo_color.a = 0.7
+	get_surface_override_material(0).albedo_color.a = 0.7
 
 func disable_icon():
 	is_icon = false
-	get_surface_material(0).albedo_color.a = 0.0
+	get_surface_override_material(0).albedo_color.a = 0.0
 
 func activate():
 	is_active = true
@@ -83,6 +83,6 @@ func set_size(size : float):
 	mesh.radius = size
 	mesh.height = size * 2
 	for child in get_children():
-		var dir = child.translation
-		child.translation = dir.normalized().round() * size * 2
+		var dir = child.position
+		child.position = dir.normalized().round() * size * 2
 		child.scale = new_size

@@ -1,16 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://dw8b83gerrx8u"]
 
-[ext_resource path="res://DEMO/res_2D/Ground.meshlib" type="MeshLibrary" id=1]
+[ext_resource type="MeshLibrary" path="res://DEMO/res_2D/Ground.meshlib" id="1"]
 
-[node name="Spatial" type="Spatial"]
+[node name="Node3D" type="Node3D"]
 
 [node name="GridMap" type="GridMap" parent="."]
-mesh_library = ExtResource( 1 )
+mesh_library = ExtResource("1")
 cell_center_y = false
-data = {
-"cells": PoolIntArray(  )
-}
-__meta__ = {
-"_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 0, 0 )
-}

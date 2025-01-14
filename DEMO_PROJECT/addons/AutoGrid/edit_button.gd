@@ -1,4 +1,4 @@
-tool
+@tool
 extends Control
 
 var popup : PopupMenu
@@ -15,8 +15,8 @@ func _enter_tree():
 	popup.set_item_accelerator(1, KEY_Q | KEY_MASK_SHIFT)
 	popup.set_item_accelerator(2, KEY_1 | KEY_MASK_SHIFT)
 	popup.set_item_accelerator(3, KEY_2 | KEY_MASK_SHIFT)
-	if !popup.is_connected("id_pressed", self, "popup_pressed"):
-		popup.connect("id_pressed", self, "popup_pressed")
+	if !popup.is_connected("id_pressed", Callable(self, "popup_pressed")):
+		popup.connect("id_pressed", Callable(self, "popup_pressed"))
 	
 	auto_bitmask = preload("res://addons/AutoGrid/AutoGrid_Bitmask.tscn")
 
@@ -37,14 +37,14 @@ func popup_pressed(id):
 func create_bitmask():
 	var selecteds = core.get_selection_list()
 	if selecteds == null:
-		print("--- AUTOGRID ERROR --- Please select MeshInstance.")
+		print("--- AUTOGRID ERROR --- Please select MeshInstance3D.")
 		return
 	
 	var activeness : bool = selecteds.size() == 1
 	
 	for selected in selecteds:
 		
-		if !(selected is MeshInstance):
+		if !(selected is MeshInstance3D):
 			continue
 		# Skip autogrid nodes, detecting with string is very bad! (Need improvement)
 		elif selected.name.begins_with("AutoGrid"):
@@ -53,8 +53,9 @@ func create_bitmask():
 #		if selected.has_node("AutoGrid_Bitmask"):
 #			print("--- AUTOGRID WARNING --- Selected node already has a bitmask.")
 		if !selected.has_node("AutoGrid_Bitmask"):
-			var bitmask = auto_bitmask.instance()
+			var bitmask = auto_bitmask.instantiate()
 			selected.add_child(bitmask)
+			bitmask.set_owner(get_tree().edited_scene_root)
 			core.set_bitmask(bitmask)
 			bitmask.global_transform.basis = Basis()
 			
@@ -66,12 +67,12 @@ func create_bitmask():
 func remove_bitmask():
 	var selecteds = core.get_selection_list()
 	if selecteds == null:
-		print("--- AUTOGRID ERROR --- Please select MeshInstance.")
+		print("--- AUTOGRID ERROR --- Please select MeshInstance3D.")
 		return
 	
 	for selected in selecteds:
 		
-		if !(selected is MeshInstance):
+		if !(selected is MeshInstance3D):
 			continue
 		
 		if selected.has_node("AutoGrid_Bitmask"):
@@ -88,7 +89,7 @@ func decrease_size():
 func set_icon():
 	var selected = core.get_selection()
 	if selected == null:
-		print("--- AUTOGRID ERROR --- Please select MeshInstance.")
+		print("--- AUTOGRID ERROR --- Please select MeshInstance3D.")
 		return
 	if selected.has_node("AutoGrid_Bitmask"):
 		core.change_icon(selected)
